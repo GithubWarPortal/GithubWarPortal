@@ -2,7 +2,7 @@
 - 👀 I’m interested in ... blockchain
 - 🌱 I’m currently learning ...crypto
 - 💞️ I’m looking to collaborate on ... Defi Crypto gaming and NFT
-- 📫 How to reach me ... Facebook, Instagram, War portal
+- 📫 How to reach me ... Facebook, Instagram, War Portal
 
 <!---
 GithubWarPortal/GithubWarPortal is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

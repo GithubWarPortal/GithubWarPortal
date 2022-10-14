@@ -1,0 +1,68 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Characters {
+  charID                 Int          @id @default(autoincrement())
+  name                   String
+  physicalDescription    String
+  personalityDescription String
+  characterHistory       String
+  price                  Int
+  dtStart                DateTime?
+  dtEnd                  DateTime?
+  UsersCards             UsersCards[]
+
+  @@unique([charID])
+  @@index([charID])
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  username   String
+  name       String
+  email      String
+  dtEnd      DateTime?
+  cartID     Int          @unique
+  UsersCards UsersCards[]
+  Purchases  Purchases[]
+  Cart       Cart[]
+
+  @@unique([id, cartID])
+  @@index([id])
+}
+
+model Cart {
+  id        Int  @id @default(autoincrement())
+  cart      User @relation(fields: [id], references: [cartID], onDelete: Cascade)
+  productID Int
+  added_dt DateTime @default(now())
+    @@index([id])
+}
+
+model Purchases {
+  userID         Int      @id 
+  user           User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  dtPurchased    DateTime @default(now())
+  purchaseAmount Int
+
+  @@index([userID])
+}
+
+model UsersCards {
+  usersCardsID Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID       Int
+  character    Characters @relation(fields: [characterID], references: [charID], onDelete: Cascade)
+  characterID  Int
+
+  @@unique([userID, characterID])
+  @@index([usersCardsID])
+}

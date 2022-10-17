@@ -10,18 +10,19 @@ datasource db {
 }
 
 model Characters {
-  charID                 Int          @id @default(autoincrement())
+  id                     Int          @id @default(autoincrement())
   name                   String
   physicalDescription    String
   personalityDescription String
   characterHistory       String
-  price                  Int
+  price                  Float
   dtStart                DateTime?
   dtEnd                  DateTime?
   UsersCards             UsersCards[]
+  Cart                   Cart[]
 
-  @@unique([charID])
-  @@index([charID])
+  @@unique([id])
+  @@index([id])
 }
 
 model User {
@@ -30,39 +31,41 @@ model User {
   name       String
   email      String
   dtEnd      DateTime?
-  cartID     Int          @unique
+  cartId     Int          @unique
   UsersCards UsersCards[]
   Purchases  Purchases[]
   Cart       Cart[]
 
-  @@unique([id, cartID])
+  @@unique([id, cartId])
   @@index([id])
 }
 
 model Cart {
-  id        Int  @id @default(autoincrement())
-  cart      User @relation(fields: [id], references: [cartID], onDelete: Cascade)
-  productID Int
-  added_dt DateTime @default(now())
-    @@index([id])
+  id          Int        @id @default(autoincrement())
+  cart        User       @relation(fields: [id], references: [cartId], onUpdate: Cascade, onDelete: Cascade)
+  character   Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  characterId Int
+  added_dt    DateTime   @default(now())
+
+  @@index([id])
 }
 
 model Purchases {
-  userID         Int      @id 
-  user           User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userId         Int      @id
+  user           User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   dtPurchased    DateTime @default(now())
-  purchaseAmount Int
+  purchaseAmount Float
 
-  @@index([userID])
+  @@index([userId])
 }
 
 model UsersCards {
-  usersCardsID Int        @id @default(autoincrement())
-  user         User       @relation(fields: [userID], references: [id], onDelete: Cascade)
-  userID       Int
-  character    Characters @relation(fields: [characterID], references: [charID], onDelete: Cascade)
-  characterID  Int
+  usersCardsId Int        @id @default(autoincrement())
+  user         User       @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  userId       Int
+  character    Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  characterId  Int
 
-  @@unique([userID, characterID])
-  @@index([usersCardsID])
+  @@unique([userId, characterId])
+  @@index([usersCardsId])
 }

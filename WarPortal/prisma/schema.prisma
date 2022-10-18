@@ -12,10 +12,10 @@ datasource db {
 model Characters {
   id                     Int          @id @default(autoincrement())
   name                   String
-  physicalDescription    String
-  personalityDescription String
-  characterHistory       String
-  price                  Float
+  physicalDescription    String       @db.Text
+  personalityDescription String       @db.Text
+  characterHistory       String       @db.Text
+  price                  Float?
   dtStart                DateTime?
   dtEnd                  DateTime?
   UsersCards             UsersCards[]
@@ -36,7 +36,7 @@ model User {
   Purchases  Purchases[]
   Cart       Cart[]
 
-  @@unique([id, cartId])
+  @@unique([id, cartId, email, username])
   @@index([id])
 }
 
@@ -68,4 +68,9 @@ model UsersCards {
 
   @@unique([userId, characterId])
   @@index([usersCardsId])
+}
+
+model Newsletter {
+  newsletterId Int    @id @default(autoincrement())
+  email        String @unique
 }

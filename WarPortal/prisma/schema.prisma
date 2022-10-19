@@ -12,8 +12,8 @@ datasource db {
 model Characters {
   id                     Int          @id @default(autoincrement())
   name                   String
-  physicalDescription    String       @db.Text
-  personalityDescription String       @db.Text
+  physicalDescription    String?      @db.Text
+  personalityDescription String?      @db.Text
   characterHistory       String       @db.Text
   price                  Float?
   dtStart                DateTime?

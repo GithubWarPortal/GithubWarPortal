@@ -15,6 +15,7 @@ model Characters {
   physicalDescription    String?      @db.Text
   personalityDescription String?      @db.Text
   characterHistory       String       @db.Text
+  characterUse           String?      @db.Text
   price                  Float?
   dtStart                DateTime?
   dtEnd                  DateTime?

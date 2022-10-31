@@ -19,14 +19,18 @@ export default function Navbar() {
           <li>
             <Link to="/Shop">Shop</Link>
           </li>
+
+          <li>
+            <Link to="/Account">Account</Link>
+          </li>
+          <li>
+            <Link to="/OtherCreativeWorks">Other Creative Works</Link>
+          </li>
           <li>
             <Link to="/Events">Events</Link>
           </li>
           <li>
-            <Link to="/Team">Team With War Portal</Link>
-          </li>
-          <li>
-            <Link to="/Account">Account</Link>
+            <Link to="/Investing">Investing</Link>
           </li>
         </ul>
       </nav>

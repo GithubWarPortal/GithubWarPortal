@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-export default function Home() {
+import Navbar from "./Navbar";
+export  function Team() {
   return (
     <>
       <Navbar></Navbar>

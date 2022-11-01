@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-export default function StoryArcs() {
+import Navbar from "./Navbar";
+export function StoryArcs() {
   return (
     <>
       <Navbar></Navbar>

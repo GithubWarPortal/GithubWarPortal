@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-export default function Shop() {
+import Navbar from "./Navbar";
+export  function Shop() {
   return (
     <>
       <Navbar></Navbar>

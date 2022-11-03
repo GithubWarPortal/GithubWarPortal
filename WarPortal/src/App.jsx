@@ -9,7 +9,7 @@ import {Team} from "./components/Team.jsx";
 import {OtherCreativeWorks} from "./components/OtherCreativeWorks.jsx";
 import {Events} from "./components/Events.jsx";
 import{Investing} from "./components/Investing.jsx";
-import {  BrowserRouter, Routes,Route } from "react-Router-dom";
+import {  BrowserRouter, Routes,Route } from "react-router-dom";
 
 
 function App() {

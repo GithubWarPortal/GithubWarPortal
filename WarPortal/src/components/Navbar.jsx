@@ -1,16 +1,6 @@
 
-import { Link} from "react-Router-dom";
+import { Link} from "react-router-dom";
 
-
-import {Home}   from "./Home.jsx";
-import {Account} from "./Account.jsx";
-import {StoryArcs} from "./StoryArcs.jsx";
-import {Shop} from "./Shop.jsx";
-import {ContactUs} from "./ContactUs.jsx";
-import {Team} from "./Team.jsx";
-import {OtherCreativeWorks} from "./OtherCreativeWorks.jsx";
-import {Events} from "./Events.jsx";
-import{Investing} from "./Investing.jsx";
 
 
 export default function Navbar() {

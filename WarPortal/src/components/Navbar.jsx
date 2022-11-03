@@ -1,3 +1,7 @@
+
+import { Link} from "react-Router-dom";
+
+
 import {Home}   from "./Home.jsx";
 import {Account} from "./Account.jsx";
 import {StoryArcs} from "./StoryArcs.jsx";
@@ -7,8 +11,6 @@ import {Team} from "./Team.jsx";
 import {OtherCreativeWorks} from "./OtherCreativeWorks.jsx";
 import {Events} from "./Events.jsx";
 import{Investing} from "./Investing.jsx";
-import { Link, Router, Route } from "react-Router-dom";
-
 
 
 export default function Navbar() {
@@ -19,19 +21,19 @@ export default function Navbar() {
         <ul>
           <li>
             
-            <Link to="/">Home</Link>
+            <Link to="/Home" >Home</Link>
 
             
           </li>
           <li>
           
-            <Link to="/Account">Story Arcs</Link>
+            <Link to="/Account">Account</Link>
 
             
           </li>
           <li>
           
-            <Link to="/StoryArcs">Account</Link>
+            <Link to="/StoryArcs">Story Arcs</Link>
 
           </li>
           <li>
@@ -42,7 +44,7 @@ export default function Navbar() {
           </li>
           <li>
           
-            <Link to='/ContactUs'>Contact Us</Link>
+            <Link to="/ContactUs">Contact Us</Link>
   
           
             </li>
@@ -68,7 +70,7 @@ export default function Navbar() {
           </li>
           <li>
             
-            <Link to="/Investing">Investing</Link>
+            <Link to="Investing">Investing</Link>
 
            
           </li>

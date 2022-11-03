@@ -1,8 +1,37 @@
 import Navbar from "./components/Navbar";
 import "./App.css";
+import {Home } from "./components/Home.jsx";
+import {Account} from "./components/Account.jsx";
+import {StoryArcs} from "./components/StoryArcs.jsx";
+import {Shop} from "./components/Shop.jsx";
+import {ContactUs} from "./components/ContactUs.jsx";
+import {Team} from "./components/Team.jsx";
+import {OtherCreativeWorks} from "./components/OtherCreativeWorks.jsx";
+import {Events} from "./components/Events.jsx";
+import{Investing} from "./components/Investing.jsx";
+import {  BrowserRouter, Routes,Route } from "react-Router-dom";
+
 
 function App() {
-  return (<Navbar/>);
+  return (
+    <>
+      <BrowserRouter>
+     <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/Home" element={<Home />}/>
+          <Route path="/Account" element={<Account />} />
+          <Route path="/StoryArcs" element={<StoryArcs />} />
+          <Route path="/Shop" element={<Shop />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/Team" element={<Team />} />
+          <Route path="/OtherCreativeWorks" element={<OtherCreativeWorks />} />
+          <Route path="/Events" element={<Events />} />
+          <Route path="/Investing" element={<Investing />} />
+       
+      </Routes>
+    </BrowserRouter></>
+  );
 }
 
 export default App;

@@ -1,9 +1,7 @@
-import Navbar from "./Navbar";
-export  function Home() {
+export function Home() {
   return (
     <>
-   
-      <h1>hey</h1>
+      <h1>Home</h1>
     </>
   );
 }

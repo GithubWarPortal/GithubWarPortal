@@ -7,10 +7,10 @@ export default function Navbar() {
     setOpen(!open);
   };
   return (
-    <div>
+    <div className="bg-yellow-900 text-white">
       <nav>
-        <ul>
-          <li>
+        <ul className="flex flex-wrap justify-center gap-8 text-center">
+          <li className="hover:bg-red-800 w-20 rounded-full ">
             <Link to="/Home">Home</Link>
           </li>
           <li>
@@ -29,7 +29,7 @@ export default function Navbar() {
           {open ? (
             <div>
               <nav>
-                <ul>
+                <ul className="flex flex-wrap justify-center gap-8 text-center">
                   <li>
                     <Link to="/Team">Team With War Portal</Link>
                   </li>

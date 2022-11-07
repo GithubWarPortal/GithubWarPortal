@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import "./App.css";
+import "./index.css";
 import {Home } from "./components/Home.jsx";
 import {Account} from "./components/Account.jsx";
 import {StoryArcs} from "./components/StoryArcs.jsx";

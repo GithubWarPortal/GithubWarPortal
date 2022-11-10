@@ -8,45 +8,56 @@ export default function Navbar() {
     setOpen(!open);
   };
   return (
-    <div className="text-xl bg-yellow-500  border-8 border-white text-gray-900 border-double m-4 p-6 rounded-full ">
+    <div class="">
       <nav>
-        <ul className="flex flex-wrap gap-8 justify-center text-center place-items-center">
-          <li className=" w-1/7 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
-            <Link className="text-xl" to="/Home">Home</Link>
+        <ul class="flex flex-wrap gap-8 justify-center text-center place-items-center">
+          <li>
+            <button class=" w-1/7 bg-gradient-to-r m-3 from-yellow-500 via-red-900  to-yellow-500 p-2 rounded-full font-bold text-center">
+             
+              <span class="w-1/7 block text-black rounded-full hover:text-white hover:bg-gray-900 bg-white"> <Link class="text-xl" to="/Home">Home</Link> </span>
+              </button>
           </li>
-          <li className=" w-1/7 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
-            <Link className="text-xl" to="/Account">Account</Link>
+          <li>
+            <button class=" w-1/7 bg-gradient-to-r m-3 from-yellow-500 via-red-900  to-yellow-500 p-2 rounded-full font-bold text-center">
+             
+              <span class="w-1/7 block text-black rounded-full hover:text-white hover:bg-gray-900 bg-white"> <Link class="text-xl" to="/Account">Account</Link> </span>
+              </button>
           </li>
-          <li className="  w-1/7 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2">
-            <Link className="text-xl" to="/StoryArcs">Stories</Link>
+          <li>
+            <button class=" w-1/7 bg-gradient-to-r m-3 from-yellow-500 via-red-900  to-yellow-500 p-2 rounded-full font-bold text-center">
+             
+              <span class="w-20 block text-black rounded-full hover:text-white hover:bg-gray-900 bg-white"> <Link class="text-xl" to="/StoryArcs">Stories</Link> </span>
+              </button>
           </li>
-          <li className="  w-1/7 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
-            <Link className="text-xl" to="/Shop">Shop</Link>
+          <li>
+            <button class=" w-1/7 bg-gradient-to-r m-3 from-yellow-500 via-red-900  to-yellow-500 p-2 rounded-full font-bold text-center">
+             
+              <span class="w-20 block text-black rounded-full hover:text-white hover:bg-gray-900 bg-white"> <Link class="text-xl" to="/Shop">Shop</Link> </span>
+              </button>
           </li>
-          <li className="  w-1/7 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
-            <Link className="text-xl" to="/ContactUs">Contact Us</Link>
-          </li>
+          
           <button
-            className=" w-20 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 "
+            class="  w-1/7 bg-gradient-to-r m-3 from-yellow-500 via-red-900  to-yellow-500 p-2 rounded-full font-bold text-center"
             onClick={handleOpen}
-          >
-            Other
+          >              <span class=" text-xl w-20 block text-black rounded-full hover:text-white hover:bg-gray-900 bg-white">  Other</span>
+
+            
           </button>
           {open ? (
             <div>
               <nav>
-                <ul className="gap-8 text-lg flex flex-wrap p-6 space-between">
-                  <li className=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
+                <ul class="gap-8 text-lg flex flex-wrap p-6 space-between">
+                  <li class=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
                     <Link to="/Team">Team With War Portal</Link>
                   </li>
 
-                  <li className=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900 hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
+                  <li class=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900 hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
                     <Link to="/OtherCreativeWorks">Other Creative Works</Link>
                   </li>
-                  <li className=" w-20 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
+                  <li class=" w-20 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
                     <Link to="/Events">Events</Link>
                   </li>
-                  <li className=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
+                  <li class=" w-30 hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold hover:text-white hover:border-white text-center hover:border-2 ">
                     <Link to="/Investing">Investing</Link>
                   </li>
                 </ul>

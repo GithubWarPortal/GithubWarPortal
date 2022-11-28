@@ -8,44 +8,44 @@ export default function Navbar() {
     setOpen(!open);
   };
   return (
-    <div class="">
+    <div class="dark:bg-gray-900 dark:text-white h-1/6">
       <nav>
-        <ul class="flex flex-wrap mt-2 gap-2 justify-center hover: text-center place-items-center">
+        <ul class="flex flex-wrap mt-2 gap-2 justify-center text-center place-items-center font-sans">
           <li>
-            <button class=" w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 from-yellow-500 via-red-900 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="w-1/7 p-2 block hover: text-red-900 rounded-full bg-white">
                 {" "}
-                <Link class="hover: text-xl" to="/Home">
+                <Link class="focus:text-red-800 focus:ring focus:ring-red-900" to="/Home">
                   Home
                 </Link>{" "}
               </span>
             </button>
           </li>
           <li>
-            <button class="w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 from-yellow-500 via-red-900 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="w-1/7 block rounded-full hover: text-red-900  p-2 bg-white">
                 {" "}
-                <Link class="hover: text-xl" to="/Account">
+                <Link class="" to="/Account">
                   Account
                 </Link>{" "}
               </span>
             </button>
           </li>
           <li>
-            <button class=" w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 from-yellow-500 via-red-900 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-20 block hover: text-red-900 rounded-full p-2 bg-white">
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="w-1/7 block hover: text-red-900 rounded-full p-2 bg-white">
                 {" "}
-                <Link class="hover: text-xl" to="/StoryArcs">
+                <Link class="" to="/StoryArcs">
                   Stories
                 </Link>{" "}
               </span>
             </button>
           </li>
           <li>
-            <button class="w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 from-yellow-500 via-red-900 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-20 block hover: text-red-900 p-2 rounded-full bg-white">
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                 {" "}
-                <Link class="hover: text-xl" to="/Shop">
+                <Link class="" to="/Shop">
                   Shop
                 </Link>{" "}
               </span>
@@ -53,11 +53,11 @@ export default function Navbar() {
           </li>
 
           <button
-            class="  w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 from-yellow-500 via-red-900 p-2 to-yellow-500  rounded-full font-bold hover: text-centerr"
+            class="w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
             onClick={handleOpen}
           >
             {" "}
-            <span class=" hover: text-red-900 hover: text-xl p-2 w-20 block rounded-full bg-white">
+            <span class=" hover: text-red-800 hover:  p-2 w-1/7 block rounded-full bg-white">
               {" "}
               Other
             </span>
@@ -65,19 +65,47 @@ export default function Navbar() {
           {open ? (
             <div>
               <nav>
-                <ul class="  text-lg flex flex-wrap p-6 space-between">
-                  <li class=" border-yellow-500 m-2 hover:text-white w-30 hover:bg-gradient-to-t  hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold  hover:text-center border-double border-2 ">
-                    <Link to="/Team">Team With War Portal</Link>
+                <ul class="flex flex-wrap mt-2 gap-2 justify-center hover: text-center place-items-center">
+                  <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/Team">
+                          Team
+                        </Link>{" "}
+                      </span>
+                    </button>
                   </li>
 
-                  <li class=" border-yellow-500 m-2  hover:text-white w-30 hover:bg-gradient-to-t  hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold  hover:text-center border-double border-2 ">
-                    <Link to="/OtherCreativeWorks">Other Creative Works</Link>
+                  <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/Events">
+                          Events
+                        </Link>{" "}
+                      </span>
+                    </button>
                   </li>
-                  <li class=" border-yellow-500  m-2  hover:text-white w-30 hover:bg-gradient-to-t  hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold  hover:text-center border-double border-2 ">
-                    <Link to="/Events">Events</Link>
+                  <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/Investing">
+                          Investing
+                        </Link>{" "}
+                      </span>
+                    </button>
                   </li>
-                  <li class=" border-yellow-500 m-2  hover:text-white w-30 hover:bg-gradient-to-t  hover:from-yellow-500 hover:via-red-900  hover:to-yellow-500 p-2 rounded-full font-bold  hover:text-center border-double border-2 ">
-                    <Link to="/Investing">Investing</Link>
+                  <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/OtherCreativeWorks">
+                          Other Works
+                        </Link>{" "}
+                      </span>
+                    </button>
                   </li>
                 </ul>
               </nav>

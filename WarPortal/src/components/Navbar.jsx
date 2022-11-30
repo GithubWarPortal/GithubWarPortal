@@ -8,14 +8,17 @@ export default function Navbar() {
     setOpen(!open);
   };
   return (
-    <div class="dark:bg-gray-900 dark:text-white h-1/6">
+    <div class="dark:bg-gray-900 dark:text-white h-1/6 ">
       <nav>
-        <ul class="flex flex-wrap mt-2 gap-2 justify-center text-center place-items-center font-sans">
+        <ul class="flex flex-wrap mt-2 gap-2 justify-center text-center place-items-center font-open">
           <li>
             <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="w-1/7 p-2 block hover: text-red-900 rounded-full bg-white">
                 {" "}
-                <Link class="focus:text-red-800 focus:ring focus:ring-red-900" to="/Home">
+                <Link
+                  class="focus:text-red-800 focus:ring focus:ring-red-900"
+                  to="/Home"
+                >
                   Home
                 </Link>{" "}
               </span>

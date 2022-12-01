@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        open: ['"Open Sans"', ...defaultTheme.fontFamily.serif],
+        zen: ['"Zen Dots"', 'cursive'],
       },
     },
   },

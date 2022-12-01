@@ -8,7 +8,7 @@ export default function Navbar() {
     setOpen(!open);
   };
   return (
-    <div class="dark:bg-gray-900 dark:text-white h-1/6 ">
+    <div class="dark:bg-gray-900 dark:text-white h-1/6 font-zen">
       <nav>
         <ul class="flex flex-wrap mt-2 gap-2 justify-center text-center place-items-center font-open">
           <li>

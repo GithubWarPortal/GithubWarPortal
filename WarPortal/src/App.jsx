@@ -10,6 +10,7 @@ import {OtherCreativeWorks} from "./components/OtherCreativeWorks.jsx";
 import {Events} from "./components/Events.jsx";
 import{Investing} from "./components/Investing.jsx";
 import {  BrowserRouter, Routes,Route } from "react-router-dom";
+import Footer from "./components/Footer.jsx";
 
 
 function App() {
@@ -30,7 +31,9 @@ function App() {
           <Route path="/Investing" element={<Investing />} />
        
       </Routes>
-    </BrowserRouter></>
+    </BrowserRouter>
+    <Footer/>
+    </>
   );
 }
 

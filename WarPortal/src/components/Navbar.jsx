@@ -16,7 +16,7 @@ export default function Navbar() {
               <span class="w-1/7 p-2 block hover: text-red-900 rounded-full bg-white">
                 {" "}
                 <Link
-                  class="focus:text-red-800 focus:ring focus:ring-red-900"
+                  class=""
                   to="/Home"
                 >
                   Home

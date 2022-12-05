@@ -10,10 +10,10 @@ export default function Footer() {
   return (
     <>
       <p>Copyright © 2022 WarPortal.org - All Rights Reserved.</p>
-      <div>
+
         <button onClick={handleOpen}>Terms and Conditions</button>
-        {open ? (
-          <><p>
+        {open ? 
+          <div><p>
                       Contracts between War Portal and you and your game are void if
                       characters do not follow the storyline provided by the War Portal
                       Universe. Contracts paid are final unless agreed by War Portal and
@@ -39,6 +39,7 @@ export default function Footer() {
                           creation under that content's creator and the publishing and use in
                           commercial applications requires a vetted process which do not grant
                           exclusive rights to any of War Portal's content. War Portal forbids
-                          unlawful behavior, hate speech, bullying, and spam.</p></>
-  ):<div></div>}</div></>
-        )}
+                          unlawful behavior, hate speech, bullying, and spam.</p>
+         </div> : <div></div> 
+}</>
+)};

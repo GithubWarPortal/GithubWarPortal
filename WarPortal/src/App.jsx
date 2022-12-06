@@ -11,6 +11,7 @@ import {Events} from "./components/Events.jsx";
 import{Investing} from "./components/Investing.jsx";
 import {  BrowserRouter, Routes,Route } from "react-router-dom";
 import Footer from "./components/Footer.jsx";
+import CardValidator from "./components/CardValidator";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/StoryArcs" element={<StoryArcs />} />
           <Route path="/Shop" element={<Shop />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/Validator" element={<CardValidator />} />
           <Route path="/Team" element={<Team />} />
           <Route path="/OtherCreativeWorks" element={<OtherCreativeWorks />} />
           <Route path="/Events" element={<Events />} />

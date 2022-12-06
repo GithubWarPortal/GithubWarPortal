@@ -69,6 +69,16 @@ export default function Navbar() {
             <div>
               <nav>
                 <ul class="flex flex-wrap mt-2 gap-2 justify-center hover: text-center place-items-center">
+                <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/Validator">
+                          Card Validator
+                        </Link>{" "}
+                      </span>
+                    </button>
+                  </li>
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
                       <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">

@@ -9,20 +9,29 @@ datasource db {
 }
 
 model Characters {
-  id                     Int          @id @default(autoincrement())
+  id                     Int                @id @default(autoincrement())
   name                   String
-  physicalDescription    String?      @db.Text
-  personalityDescription String?      @db.Text
-  characterHistory       String       @db.Text
-  characterUse           String?      @db.Text
+  physicalDescription    String?            @db.Text
+  personalityDescription String?            @db.Text
+  characterHistory       String             @db.Text
+  characterUse           String?            @db.Text
   price                  Float?
   dtStart                DateTime?
   dtEnd                  DateTime?
-  UsersCards             UsersCards[]
-  Cart                   Cart[]
+  characterStorage       characterStorage[]
 
   @@unique([id])
   @@index([id])
+}
+
+model characterStorage {
+  cardId      Int        @id @default(autoincrement())
+  characterId Int
+  character   Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@unique([cardId])
+  @@index([cardId])
+  @@index([characterId])
 }
 
 model User {
@@ -41,11 +50,11 @@ model User {
 }
 
 model Cart {
-  id          Int        @id @default(autoincrement())
-  cart        User       @relation(fields: [id], references: [cartId], onUpdate: Cascade, onDelete: Cascade)
-  character   Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  id          Int      @id @default(autoincrement())
+  cart        User     @relation(fields: [id], references: [cartId], onUpdate: Cascade, onDelete: Cascade)
+  //TODO: Add relation to characterStorage table
   characterId Int
-  added_dt    DateTime   @default(now())
+  added_dt    DateTime @default(now())
 
   @@index([id])
   @@index([characterId])
@@ -61,10 +70,10 @@ model Purchases {
 }
 
 model UsersCards {
-  usersCardsId Int        @id @default(autoincrement())
-  user         User       @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  usersCardsId Int  @id @default(autoincrement())
+  user         User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   userId       Int
-  character    Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  //TODO: Add relation to characterStorage  table
   characterId  Int
 
   @@unique([userId, characterId])

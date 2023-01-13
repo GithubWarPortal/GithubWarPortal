@@ -9,27 +9,25 @@ datasource db {
 }
 
 model Characters {
-  id                     Int                @id @default(autoincrement())
+  id                     Int       @id @unique @default(autoincrement())
   name                   String
-  physicalDescription    String?            @db.Text
-  personalityDescription String?            @db.Text
-  characterHistory       String             @db.Text
-  characterUse           String?            @db.Text
+  physicalDescription    String?   @db.Text
+  personalityDescription String?   @db.Text
+  characterHistory       String    @db.Text
   price                  Float?
   dtStart                DateTime?
   dtEnd                  DateTime?
-  characterStorage       characterStorage[]
+  characterUse           String?   @db.Text
 
-  @@unique([id])
   @@index([id])
 }
 
-model characterStorage {
-  cardId      Int        @id @default(autoincrement())
-  characterId Int
-  character   Characters @relation(fields: [characterId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+model CharacterStorage {
+  cardId      Int         @id @default(autoincrement())
+  characterId Int? 
+  storage     UsersCards[]
 
-  @@unique([cardId])
+  
   @@index([cardId])
   @@index([characterId])
 }
@@ -41,20 +39,20 @@ model User {
   email      String
   dtEnd      DateTime?
   cartId     Int          @unique
-  UsersCards UsersCards[]
-  Purchases  Purchases[]
   Cart       Cart[]
+  Purchases  Purchases[]
+  UsersCards UsersCards[]
 
   @@unique([id, cartId, email, username])
   @@index([id])
 }
 
 model Cart {
-  id          Int      @id @default(autoincrement())
-  cart        User     @relation(fields: [id], references: [cartId], onUpdate: Cascade, onDelete: Cascade)
-  //TODO: Add relation to characterStorage table
-  characterId Int
-  added_dt    DateTime @default(now())
+  id            Int        @id @default(autoincrement())
+  characterId   Int
+  characterCart UsersCards @relation(fields: [characterId], references: [characterId])
+  added_dt      DateTime   @default(now())
+  cart          User       @relation(fields: [id], references: [cartId], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([id])
   @@index([characterId])
@@ -62,22 +60,24 @@ model Cart {
 
 model Purchases {
   userId         Int      @id
-  user           User     @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   dtPurchased    DateTime @default(now())
   purchaseAmount Float
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([userId])
 }
 
 model UsersCards {
-  usersCardsId Int  @id @default(autoincrement())
-  user         User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
-  userId       Int
-  //TODO: Add relation to characterStorage  table
-  characterId  Int
+  usersCardsId  Int               @id @default(autoincrement())
+  userId        Int
+  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId   Int?
+  storage       CharacterStorage? @relation(fields: [characterId], references: [characterId], onDelete: Cascade, onUpdate: Cascade)
+  characterCart Cart[]
 
-  @@unique([userId, characterId])
+  @@unique([characterId])
   @@index([usersCardsId])
+  @@index([userId])
   @@index([characterId])
 }
 

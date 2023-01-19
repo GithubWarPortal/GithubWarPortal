@@ -1,15 +1,24 @@
-import express from 'express';
 import { PrismaClient } from "@prisma/client";
-
+import express from "express";
 const prisma = new PrismaClient();
-const app = express();
 
-app.get('/Validator', async (req, res) => {
-    const owned = await prisma.UsersCards.findUniqueOrThrow({
-      where: { userId: 1, characterId: 5 },
-     
-    });
-  
-    res.json(owned);
-    console.log(owned)
-  }); 
+const app = express();
+app.use(express.json());
+
+app.get("/CardValidator", async (req, res) => {
+  const { userId } = req.body;
+  const { characterId } = req.params;
+
+  const owned = await prisma.usersCards.findFirstOrThrow({
+    select: {
+      usersCardsId,
+      where: {
+        id: Int(userId),
+        characterId: Int(characterId)
+
+      },
+    },
+  });
+
+  res.json(owned);
+});

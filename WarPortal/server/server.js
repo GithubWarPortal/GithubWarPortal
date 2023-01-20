@@ -1,24 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import express from "express";
-const prisma = new PrismaClient();
 
 const app = express();
+app.use(require("./routes/cardValidator"));
 app.use(express.json());
 
-app.get("/CardValidator", async (req, res) => {
-  const { userId } = req.body;
-  const { characterId } = req.params;
 
-  const owned = await prisma.usersCards.findFirstOrThrow({
-    select: {
-      usersCardsId,
-      where: {
-        id: Int(userId),
-        characterId: Int(characterId)
+const PORT = process.env.PORT || 3000;
 
-      },
-    },
-  });
-
-  res.json(owned);
-});
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

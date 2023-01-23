@@ -1,17 +1,20 @@
 import express from "express";
-import "./routes/cardValidator"
+import CardValidator from "./routes/cardValidator.js";
+import cors from 'cors'
+import * as dotenv from 'dotenv'
 
-const cors = require("cors");
-require("dotenv").config({ path: "./env" });
+dotenv.config()
+
 const port = process.env.PORT || 5000;
 
 
 const app = express();
 
-app.use(express.json());
-app.use(cors());
+app.use(cors())
 
-app.use(require("./routes/cardValidator"));
+
+
+app.use(cors(CardValidator()));
 
 
 

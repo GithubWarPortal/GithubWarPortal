@@ -8,11 +8,12 @@ export default function CardValidator() {
   const handleChange = (event) => {
     setUserInput({ ...userInput, [event.target.name]: event.target.value });
   };
-  function handleSubmit (userId, characterId) {
-    fetch("http://localhost:5000/Validator")
+function handleSubmit (userId, characterId) {
+ fetch(`http://localhost:5000/CardValidator/${userId}/${characterId}`,{
+    
    
 
-  }
+   } )}
 
 
   

@@ -23,22 +23,21 @@ model Characters {
 }
 
 model CharacterStorage {
-  cardId      Int         @id @default(autoincrement())
-  characterId Int  
+  cardId      String          @id @default(uuid())
+  characterId String       @default(uuid())
   storage     UsersCards[]
 
-  
   @@index([cardId])
   @@index([characterId])
 }
 
 model User {
-  id         Int          @id @default(autoincrement())
+  id         String          @id @default(uuid())
   username   String
   name       String
   email      String
   dtEnd      DateTime?
-  cartId     Int          @unique
+  cartId     String          @unique
   Cart       Cart[]
   Purchases  Purchases[]
   UsersCards UsersCards[]
@@ -48,18 +47,18 @@ model User {
 }
 
 model Cart {
-  id            Int        @id @default(autoincrement())
-  characterId   Int
- 
-  added_dt      DateTime   @default(now())
-  cart          User       @relation(fields: [id], references: [cartId], onDelete: Cascade, onUpdate: Cascade)
+  id          String @id @default(uuid())
+  characterId Int
+
+  added_dt DateTime @default(now())
+  cart     User     @relation(fields: [id], references: [cartId], onDelete: Cascade, onUpdate: Cascade)
 
   @@index([id])
   @@index([characterId])
 }
 
 model Purchases {
-  userId         Int      @id
+  userId         String      @id
   dtPurchased    DateTime @default(now())
   purchaseAmount Float
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -68,12 +67,11 @@ model Purchases {
 }
 
 model UsersCards {
-  usersCardsId  Int               @id @default(autoincrement())
-  userId        Int
-  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  characterId   Int
-  storage       CharacterStorage? @relation(fields: [characterId], references: [cardId], onDelete: Cascade, onUpdate: Cascade)
- 
+  usersCardsId String            @id @default(uuid())
+  userId       String            @default(uuid())
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId  String            @default(uuid())
+  storage      CharacterStorage? @relation(fields: [characterId], references: [cardId], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([characterId])
   @@index([usersCardsId])

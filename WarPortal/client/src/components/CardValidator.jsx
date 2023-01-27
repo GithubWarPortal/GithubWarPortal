@@ -1,6 +1,5 @@
 import { useState } from "react";
-import axios from 'axios'
-
+import axios from "axios";
 export default function CardValidator() {
   const [userInput, setUserInput] = useState({
     userId: "",
@@ -10,27 +9,20 @@ export default function CardValidator() {
   const handleChange = (event) => {
     setUserInput({ ...userInput, [event.target.name]: event.target.value });
   };
-async function handleSubmit () {
 
-  const newInput = {...userInput}
+  async function handleSubmit(req, res) {
+    const submittedUserId = userInput.userId;
+    const submittedCharacterId = userInput.characterId;
+   await  axios.post("http://localhost:5000/CardValidator", {
+      body: {/* TODO:*/},
+    });
+    console.log(submittedUserId, submittedCharacterId);
+  }
 
- await fetch("http://localhost:5000/CardValidator", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({userInput}),
-}).catch((error) => {
-  window.alert(error);
-  return;
- })
-}
-
-  
   return (
     <>
       <h1>Card Validator</h1>
-      <form onSubmit={handleSubmit()}>
+      <form onSubmit={handleSubmit}>
         <h2>User ID</h2>
         <input
           type="text"
@@ -54,4 +46,4 @@ async function handleSubmit () {
       </form>
     </>
   );
-   } 
+}

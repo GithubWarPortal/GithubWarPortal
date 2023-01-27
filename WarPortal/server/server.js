@@ -14,14 +14,13 @@ app.use(cors());
 const prisma = new PrismaClient();
 console.log("ah");
 
-app.get(`/CardValidator`, async (req, res) => {
-  const userId = req.body.userId;
-  const characterId = req.body.characterId;
-
+app.get("/CardValidator", async (req, res) => {
+  const  userId = req.body.userId;
+  const characterId  = req.body.characterId;
   try {
-    await prisma.usersCards.findFirstOrThrow({
-      where: { userId: userId, characterId: characterId },
-    });
+    await prisma.usersCards.findFirst({
+      where: { //TODO:
+      })
   } catch (error) {
     console.error(error);
     // Expected output: ReferenceError: nonExistentFunction is not defined

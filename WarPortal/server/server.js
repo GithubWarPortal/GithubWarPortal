@@ -22,10 +22,12 @@ app.post(`/CardValidator`, async (req, res) => {
     const userCard = await prisma.usersCards.findFirst({
       where: {userId, characterId}
     });
-    if (!characterId) {
+    if (!userCard) {
       return res.status(404).send('Invalid character');
     }
-    else
+    if (!userId) {
+      return res.status(400).send('Invalid user');
+    }
     return res.status(200).send('Valid card');
   } catch (error) {
     console.error(error);

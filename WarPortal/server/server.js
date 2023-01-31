@@ -15,22 +15,22 @@ const prisma = new PrismaClient();
 console.log("ah");
 
 
-app.get("/CardValidator", async (req, res) => {
-  const  userId = req.params.userId;
-  const characterId  = req.params.characterId;
+app.post(`/CardValidator`, async (req, res) => {
+  const userId = req.body.userId;
+  const characterId = req.body.characterId;
   try {
- await prisma.usersCards.findFirst({
-      where: userId, characterId });
-   if (!userId )
-  res.send("Invalid User")
-  if(!characterId)
-  res.send("Invalid Character")
-  else
-  res.send("Valid Card!")
+    const userCard = await prisma.usersCards.findFirst({
+      where: {userId, characterId}
+    });
+    if (!characterId) {
+      return res.status(404).send('Invalid character');
+    }
+    else
+    return res.status(200).send('Valid card');
   } catch (error) {
     console.error(error);
-    // Expected output: ReferenceError: nonExistentFunction is not defined
-    // (Note: the exact output may be browser-dependent)
+    return res.status(500).send('Error: Unable to validate card');
   }
 });
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -27,7 +27,7 @@ function App() {
           <Route path="/Shop" element={<Shop />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/Validator" element={<CardValidator />} />
-          <Route path="/CardValidator" element={<CardValidator />} />
+
           <Route path="/Team" element={<Team />} />
           <Route path="/OtherCreativeWorks" element={<OtherCreativeWorks />} />
           <Route path="/Events" element={<Events />} />

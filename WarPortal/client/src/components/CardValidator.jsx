@@ -12,31 +12,37 @@ export default function CardValidator() {
   };
   const [responseData, setResponseData] = useState([]);
 
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          const response = await axios.post('http://localhost:5173/CardValidator', {
-            userId: userInput.userId,
-            characterId: userInput.characterId
-          });
-          setResponseData(response.data);
-        } catch (error) {
-          console.error(error);
-          setResponseData('Error: Unable to validate card');
-        }}
-      ;
-    
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = fetch("http://localhost:5000/CardValidator", {
+       
   
- 
- 
+      method: "POST",
+     "Content-Type": "application/json",
+        body: {
+         userId: JSON.stringify(userInput.userId),
+         characterId: JSON.stringify(userInput.characterId)
+        }
+        
+      });
+      console.log(res);
+      const data = await fetch("http://localhost:5000/CardValidator");
+
+
+      console.log(data);
+     setResponseData(data)
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <h1>Card Validator</h1>
-     
+
       <form onSubmit={handleSubmit}>
-    
         <h2>User ID</h2>
-  
         <input
           type="text"
           name="userId"
@@ -55,9 +61,13 @@ export default function CardValidator() {
           required
         ></input>{" "}
         <input type="reset"></input>
-        <input type="submit"></input>
-      </form><div>{responseData}</div>
-    </>
+        <input type="submit"></input> </form><div>
+                <div>{responseData}</div></div>
+        
+       
+
+    
+       
+      </>
   );
-      }
-      
+}

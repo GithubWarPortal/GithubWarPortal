@@ -14,25 +14,21 @@ export default function CardValidator() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("clicked submit")
     try {
-      const res = fetch("http://localhost:5000/CardValidator", {
-       
-  
-      method: "POST",
-     "Content-Type": "application/json",
-        body: {
-         userId: JSON.stringify(userInput.userId),
-         characterId: JSON.stringify(userInput.characterId)
-        }
-        
+      const res = await fetch("http://localhost:5000/CardValidator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userInput.userId,
+          characterId: userInput.characterId
+        })
       });
-      console.log(res);
-      const data = await fetch("http://localhost:5000/CardValidator");
-
-
-      console.log(data);
-     setResponseData(data)
-
+      console.log("Post request succeeded");
+      const data = await res.json();
+      setResponseData(data);
     } catch (error) {
       console.error(error);
     }

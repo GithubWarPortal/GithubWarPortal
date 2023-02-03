@@ -14,25 +14,27 @@ app.use(cors());
 const prisma = new PrismaClient();
 console.log("ah");
 
-const recordRoutes = express.Router();
-
-
-   
-
-recordRoutes.route(`/CardValidator`, async (req, res) => {
+app.post(`/CardValidator`, async (req, res) => {
 console.log("API is called")
-const userInput = {
-  userId: req.body.userId,
-  characterId: req.body.characterId
-}
- 
-  console.log( userInput)
 
-  try {
-    const userCard = await prisma.usersCards.findFirstOrThrow({
+const userId = req.body.userId
+const characterId = req.body.characterId      
+
+
+console.log(req.body)
+console.log("Recieved data from frontend")
+try {
+
+
+ 
+  
+
+  
+    const userCard = await prisma.usersCards.findFirst({
       where: {userId, characterId}}
     )
-  
+  console.log(userCard)
+  console.log("ran prisma query")
       if (!userCard) {
          return res.status(404).send('Invalid character');
        }
@@ -44,9 +46,9 @@ const userInput = {
        console.error(error);
        return res.status(500).send('Error: Unable to validate card');
      }
-     }
-   
-
-  )
+       
+}
+)
+        
   app.listen(port, () => console.log(`Server is running on port ${port}`));
 

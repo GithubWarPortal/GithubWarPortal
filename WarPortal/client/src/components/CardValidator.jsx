@@ -12,14 +12,15 @@ export default function CardValidator() {
   };
   const [responseData, setResponseData] = useState([]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event, req, res) => {
     event.preventDefault();
     console.log("clicked submit")
     try {
-      const res = await fetch("http://localhost:5000/CardValidator", {
+      const check = await fetch("http://localhost:5000/CardValidator", {
         method: "POST",
+        credentials: 'same-origin',
         headers: {
-          "Content-Type": "application/json",
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           userId: userInput.userId,
@@ -27,8 +28,10 @@ export default function CardValidator() {
         })
       });
       console.log("Post request succeeded");
-      const data = await res.json();
+      const data = await check.json();
       setResponseData(data);
+      console.log(data)
+      return res.json()
     } catch (error) {
       console.error(error);
     }
@@ -57,8 +60,11 @@ export default function CardValidator() {
           required
         ></input>{" "}
         <input type="reset"></input>
-        <input type="submit"></input> </form><div>
-                <div>{responseData}</div></div>
+        <input type="submit"></input> </form> <div>
+    {responseData.map(data => (
+      <p>{data}</p>
+    ))}
+  </div>
         
        
 

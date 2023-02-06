@@ -16,7 +16,7 @@ export default function CardValidator() {
     event.preventDefault();
     console.log("clicked submit")
     try {
-      const check = await fetch("http://localhost:5000/CardValidator", {
+      const check  = await fetch("http://localhost:5000/CardValidator", {
         method: "POST",
         credentials: 'same-origin',
         headers: {
@@ -28,10 +28,10 @@ export default function CardValidator() {
         })
       });
       console.log("Post request succeeded");
-      const data = await check.json();
+ const data = await check.json();
       setResponseData(data);
-      console.log(data)
-      return res.json()
+     
+  
     } catch (error) {
       console.error(error);
     }
@@ -60,16 +60,17 @@ export default function CardValidator() {
           required
         ></input>{" "}
         <input type="reset"></input>
-        <input type="submit"></input> </form> <div>
-    {responseData.map(data => (
-      <p>{data}</p>
-    ))}
-  </div>
+        <input type="submit"></input></form> 
+     
+        <div>
+{responseData}
+  
+</div>
         
        
 
     
        
-      </>
+     </>
   );
-}
+          }

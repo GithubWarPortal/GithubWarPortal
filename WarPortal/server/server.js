@@ -23,6 +23,8 @@ app.post(`/CardValidator`, async (req, res) => {
 
   console.log(req.body);
   console.log("Recieved data from frontend");
+
+  //TODO: move api to routes folder
   try {
     const userCard = await prisma.usersCards.findFirst({
       where: { userId, characterId },
@@ -30,12 +32,12 @@ app.post(`/CardValidator`, async (req, res) => {
     console.log(userCard);
     console.log("ran prisma query");
     if (!userCard) {
-      return res.status(404).send(["Invalid character"]);
+      return res.status(404).send(["Invalid Character"]);
     }
     if (!userId) {
-      return res.status(400).send(["Invalid user"]);
+      return res.status(400).send(["Invalid User"]);
     }
-    return res.status(200).send(["Valid card"]);
+    return res.status(200).send(["Valid Card!"]);
   } catch (error) {
     console.error(error);
     return res.status(500).send("Error: Unable to validate card");

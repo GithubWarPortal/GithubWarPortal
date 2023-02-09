@@ -32,12 +32,12 @@ app.post(`/CardValidator`, async (req, res) => {
     console.log(userCard);
     console.log("ran prisma query");
     if (!userCard) {
-      return res.status(404).send(["Invalid Character"]);
+      return res.status(404).send(["Invalid"]);
     }
     if (!userId) {
-      return res.status(400).send(["Invalid User"]);
+      return res.status(400).send(["Invalid"]);
     }
-    return res.status(200).send(["Valid Card!"]);
+    return res.status(200).send(["Valid!"]);
   } catch (error) {
     console.error(error);
     return res.status(500).send("Error: Unable to validate card");

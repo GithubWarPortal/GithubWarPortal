@@ -36,20 +36,23 @@ export default function CardValidator() {
   };
   return (
     <>
-      <div class="text-red-800 mt-2 mb-2 flex items-center justify-center text-center text-lg">
+      <div class="mt-2 mb-2 flex items-center justify-center text-center text-lg text-red-800">
         <form onSubmit={handleSubmit} class="">
-        <div class="flex justify-center">  <h1 class="text flex justify-center rounded-full bg-white  bg-gradient-to-tr from-yellow-500 via-red-800  to-yellow-500 p-2 text-center align-middle text-white w-2/3 ">
-            Card Validator
-          </h1></div>
           <div class="flex justify-center">
-
-              {" "}
-              <h2 class="mt-2 w-1/3 text-white rounded-full bg-gradient-to-tl  from-yellow-500   via-red-800 to-yellow-500  hover:to-yellow-500  p-1">User ID</h2>
-
+            {" "}
+            <h1 class="text flex w-2/3 justify-center rounded-full  bg-white bg-gradient-to-tr from-yellow-500  via-red-800 to-yellow-500 p-2 text-center align-middle text-white ">
+              Card Validator
+            </h1>
+          </div>
+          <div class="flex justify-center">
+            {" "}
+            <h2 class="mt-2 w-1/3 rounded-full bg-gradient-to-tl from-yellow-500  via-red-800   to-yellow-500 p-1  text-white  hover:to-yellow-500">
+              User ID
+            </h2>
           </div>
           <div class="mt-2  rounded-full  bg-gradient-to-tl   from-yellow-500 via-red-800 to-yellow-500 p-1 hover:to-yellow-500 ">
             <input
-              class="text-center rounded-full bg-white p-2 placeholder-red-800"
+              class="rounded-full bg-white p-2 text-center placeholder-red-800"
               type="text"
               name="userId"
               placeholder="Enter Here"
@@ -60,17 +63,14 @@ export default function CardValidator() {
           </div>
 
           <div class="flex justify-center">
-              {" "}
-              <h2 class="mt-2 w-1/3 text-white rounded-full bg-gradient-to-tl  from-yellow-500   via-red-800 to-yellow-500  hover:to-yellow-500  p-1">
-
-                Card ID
-              </h2>
-           
- 
+            {" "}
+            <h2 class="mt-2 w-1/3 rounded-full bg-gradient-to-tl from-yellow-500  via-red-800   to-yellow-500 p-1  text-white  hover:to-yellow-500">
+              Card ID
+            </h2>
           </div>
           <div class="mt-2  rounded-full  bg-gradient-to-tl   from-yellow-500 via-red-800 to-yellow-500 p-1 hover:to-yellow-500 ">
             <input
-              class="text-center rounded-full bg-white p-2 placeholder-red-800"
+              class="rounded-full bg-white p-2 text-center placeholder-red-800"
               type="text"
               name="characterId"
               placeholder="Enter Here"
@@ -82,12 +82,12 @@ export default function CardValidator() {
 
           <input
             type="submit"
-            class=" m-2 mt-2 w-1/3 rounded-full bg-gradient-to-tr  from-yellow-500   via-red-800  to-yellow-500 text-white hover:from-red-800 hover:via-yellow-500 p-1 hover:to-red-800"
+            class=" m-2 mt-2 w-1/3 rounded-full bg-gradient-to-tr  from-yellow-500   via-red-800  to-yellow-500 p-1 text-white hover:from-red-800 hover:via-yellow-500 hover:to-red-800"
           ></input>
           <h1 class=" text-red-800">Card is:</h1>
           <div class="flex justify-center">
             {" "}
-            <p class="p-1 flex w-1/3  justify-center  rounded-full  bg-gradient-to-tr   from-yellow-500 via-red-800 to-yellow-500 text-center align-middle text-white ">
+            <p class="flex w-1/3 justify-center  rounded-full  bg-gradient-to-tr  from-yellow-500   via-red-800 to-yellow-500 p-1 text-center align-middle text-white ">
               {" "}
               {responseData}
             </p>

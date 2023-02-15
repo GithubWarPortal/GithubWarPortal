@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Characters {
+  id                     Int       @id @unique @default(autoincrement())
+  name                   String
+  physicalDescription    String?   @db.Text
+  personalityDescription String?   @db.Text
+  characterHistory       String    @db.Text
+  price                  Float?
+  dtStart                DateTime?
+  dtEnd                  DateTime?
+  characterUse           String?   @db.Text
+
+  @@index([id])
+}
+
+model CharacterStorage {
+  cardId      String          @id @default(uuid())
+  characterId String       @default(uuid())
+  storage     UsersCards[]
+
+  @@index([cardId])
+  @@index([characterId])
+}
+
+model User {
+  id         String          @id @default(uuid())
+  username   String
+  name       String
+  email      String
+  dtEnd      DateTime?
+  cartId     String          @unique
+  Cart       Cart[]
+  Purchases  Purchases[]
+  UsersCards UsersCards[]
+
+  @@unique([id, cartId, email, username])
+  @@index([id])
+}
+
+model Cart {
+  id          String @id @default(uuid())
+  characterId Int
+
+  added_dt DateTime @default(now())
+  cart     User     @relation(fields: [id], references: [cartId], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([id])
+  @@index([characterId])
+}
+
+model Purchases {
+  userId         String      @id
+  dtPurchased    DateTime @default(now())
+  purchaseAmount Float
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@index([userId])
+}
+
+model UsersCards {
+  usersCardsId String            @id @default(uuid())
+  userId       String            @default(uuid())
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  characterId  String            @default(uuid())
+  storage      CharacterStorage? @relation(fields: [characterId], references: [cardId], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([characterId])
+  @@index([usersCardsId])
+  @@index([userId])
+  @@index([characterId])
+}
+
+model Newsletter {
+  newsletterId Int    @id @default(autoincrement())
+  email        String @unique
+}

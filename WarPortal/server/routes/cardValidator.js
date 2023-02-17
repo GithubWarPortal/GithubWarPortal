@@ -1,24 +1,37 @@
-import { PrismaClient } from "@prisma/client";
 import express from "express";
-import cors from "cors";
-export default function CardValidator() {
-  const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client";
 
-  const app = express();
-  app.use(express.json());
-  app.use(cors());
+const prisma = new PrismaClient();
+const cardValidatorRouter = express.Router();
 
-  app.get("/CardValidator", async (req, res) => {
-    const userId = req.params.userId;
-    const characterId = req.params.characterId;
+cardValidatorRouter.post("/", async (req, res) => {
+  console.log("API is called");
 
-    try {
-      await prisma.usersCards.findFirst({
-        select: usersCardsId,
-        where: { userId, characterId },
-      });
-    } catch (error) {
-      console.error(error);
+  const userId = req.body.userId;
+  const characterId = req.body.characterId;
+
+  console.log(req.body);
+  console.log("Received data from frontend");
+
+  try {
+    const userCard = await prisma.usersCards.findFirst({
+      where: { userId, characterId },
+    });
+    console.log(userCard);
+    console.log("Ran Prisma query");
+
+    if (!userCard) {
+      return res.status(404).send(["Invalid"]);
     }
-  });
-}
+    if (!userId) {
+      return res.status(400).send(["Invalid"]);
+    }
+
+    return res.status(200).send(["Valid!"]);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Error: Unable to validate card");
+  }
+});
+
+export default cardValidatorRouter;

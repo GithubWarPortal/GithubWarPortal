@@ -36,11 +36,11 @@ export default function CardValidator() {
   };
   return (
     <>
-      <div class="lg:mt-10 lg:flex-wrap lg:justify-center lg:align-middle  mt-6 flex items-center justify-center text-center text-lg text-red-800">
+      <div class="dark:bg-black dark:text-white lg:flex-wrap lg:justify-center lg:align-middle   flex items-center justify-center text-center text-lg text-red-800">
         <form onSubmit={handleSubmit} class="">
-        <header class=" flex justify-center">
+        <header class="  flex justify-center">
             {" "}
-            <h1 class="lg:text-3xl lg:w-1/4 flex w-2/3 justify-center rounded-full  bg-white bg-gradient-to-tr from-yellow-500  via-red-800 to-yellow-500 p-2 text-center align-middle text-white ">
+            <h1 class="lg:p-4 lg:m-6 lg:text-3xl lg:w-1/4 flex w-2/3 justify-center rounded-full  bg-white bg-gradient-to-tr from-yellow-500  via-red-800 to-yellow-500 p-2 text-center align-middle text-white ">
               Card Validator
             </h1>
           </header>
@@ -48,14 +48,14 @@ export default function CardValidator() {
           <section class="lg:mr-2 lg:mt-8 lg:text-3xl lg:align-middle lg:justify-center flex justify-center">
             <label for="User Id">
               {" "}
-              <h2 class="lg:flex lg:p-3 flex-col mt-2  rounded-full bg-gradient-to-tl from-yellow-500  via-red-800   to-yellow-500 pl-2 pt-1 pb-1  pr-2 text-white  hover:to-yellow-500">
+              <h2 class=" lg:m-4 lg:flex lg:p-3 flex-col mt-2  rounded-full bg-gradient-to-tl from-yellow-500  via-red-800   to-yellow-500 pl-2 pt-1 pb-1  pr-2 text-white  hover:to-yellow-500">
                 User ID
               </h2>
             </label>
           </section>
           <section class="lg:mt-4   mt-2  rounded-full  bg-gradient-to-tl   from-yellow-500 via-red-800 to-yellow-500 p-1 hover:to-yellow-500 ">
             <input
-              class="   rounded-full bg-white p-2 lg:p-10 text-center placeholder-red-800"
+              class=" dark:bg-black  rounded-full bg-white p-2 lg:p-10 text-center placeholder-red-800"
               type="text"
               name="userId"
               placeholder="Enter Here"
@@ -68,14 +68,14 @@ export default function CardValidator() {
           <section class="lg:mr-2 lg:ml-2 lg:mt-8 lg:text-3xl lg:align-middle lg:justify-center flex justify-center">
             <label for="User Id">
               {" "}
-              <h2 class="lg:flex lg:p-3 flex-col mt-2  rounded-full bg-gradient-to-tl from-yellow-500  via-red-800   to-yellow-500 pl-2 pt-1 pb-1  pr-2 text-white  hover:to-yellow-500">
+              <h2 class="lg:flex lg:p-3 flex-col mt-2  rounded-full bg-gradient-to-tl from-yellow-500  via-red-800  lg:m-4 to-yellow-500 pl-2 pt-1 pb-1  pr-2 text-white  hover:to-yellow-500">
                 Card ID
               </h2>
             </label>
           </section>
           <section class="lg:mt-4    mt-2  rounded-full  bg-gradient-to-tl   from-yellow-500 via-red-800 to-yellow-500 p-1 hover:to-yellow-500 ">
             <input
-              class="   rounded-full bg-white p-2 lg:p-10 text-center placeholder-red-800"
+              class="dark:bg-black   rounded-full bg-white p-2 lg:p-10 text-center placeholder-red-800"
               type="text"
               name="characterId"
               placeholder="Enter Here"
@@ -85,11 +85,11 @@ export default function CardValidator() {
             ></input>
           </section>
 </div>          <div class="lg:flex-wrap lg:flex-row ">
-          <section class="  ">
+          <section class="">
             <label for="Submit Button">
               <input
                 type="submit"
-                class=" m-2 mt-2 lg:m-10 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-yellow-500   via-red-800  to-yellow-500 p-1 text-white hover:from-red-800 hover:via-yellow-500 hover:to-red-800"
+                class="lg:p-4 m-2 mt-2 lg:m-10 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-yellow-500   via-red-800  to-yellow-500 p-1 text-white hover:from-red-800 hover:via-yellow-500 hover:to-red-800"
               ></input>
             </label>
             <label for="Result">

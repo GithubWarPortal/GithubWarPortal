@@ -1,24 +1,35 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
   };
+ 
+
+
   return (
-    <div class="dark:bg-gray-900 dark:text-white h-1/6 font-zen">
+    <div class="text-xl  dark:bg-black lg:p-6  h-1/6 font-zen">
       <nav>
-        <ul class="flex flex-wrap mt-2 gap-2 justify-center text-center place-items-center font-open">
+        <ul class="flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
           <li>
-            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-1/7 p-2 block hover: text-red-900 rounded-full bg-white">
+            <button class=" w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="dark:text-amber-500 w-1/7 p-2 block hover: text-red-900 rounded-full dark:bg-black bg-white">
                 {" "}
-                <Link
-                  class=""
-                  to="/Home"
-                >
+                <Link class="" to="/Home">
                   Home
                 </Link>{" "}
               </span>
@@ -26,7 +37,7 @@ export default function Navbar() {
           </li>
           <li>
             <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-1/7 block rounded-full hover: text-red-900  p-2 bg-white">
+              <span class="dark:text-amber-500  dark:bg-black w-1/7 block rounded-full hover: text-red-900  p-2 bg-white">
                 {" "}
                 <Link class="" to="/Account">
                   Account
@@ -36,7 +47,7 @@ export default function Navbar() {
           </li>
           <li>
             <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-1/7 block hover: text-red-900 rounded-full p-2 bg-white">
+              <span class="dark:text-amber-500  dark:bg-black w-1/7 block hover: text-red-900 rounded-full p-2 bg-white">
                 {" "}
                 <Link class="" to="/StoryArcs">
                   Stories
@@ -46,7 +57,7 @@ export default function Navbar() {
           </li>
           <li>
             <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-              <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+              <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                 {" "}
                 <Link class="" to="/Shop">
                   Shop
@@ -55,12 +66,13 @@ export default function Navbar() {
             </button>
           </li>
 
+
           <button
-            class="w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
+            class="  w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
             onClick={handleOpen}
           >
             {" "}
-            <span class=" hover: text-red-800 hover:  p-2 w-1/7 block rounded-full bg-white">
+            <span class="dark:text-amber-500 hover: text-red-800 hover:  p-2 w-1/7 block dark:bg-black rounded-full bg-white">
               {" "}
               Other
             </span>
@@ -69,9 +81,9 @@ export default function Navbar() {
             <div>
               <nav>
                 <ul class="flex flex-wrap mt-2 gap-2 justify-center hover: text-center place-items-center">
-                <li>
+                  <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
                         <Link class="" to="/Validator">
                           Card Validator
@@ -81,7 +93,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
                         <Link class="" to="/Team">
                           Team
@@ -92,7 +104,7 @@ export default function Navbar() {
 
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                      <span class="dark:text-amber-500 w-1/7 block hover: text-red-900 p-2 dark:bg-black rounded-full bg-white">
                         {" "}
                         <Link class="" to="/Events">
                           Events
@@ -102,7 +114,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
                         <Link class="" to="/Investing">
                           Investing
@@ -112,7 +124,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
                         <Link class="" to="/OtherCreativeWorks">
                           Other Works
@@ -124,8 +136,17 @@ export default function Navbar() {
               </nav>
             </div>
           ) : null}
-        </ul>
-      </nav>
+        <li>
+            <button
+              onClick={toggleTheme}
+              class="text-sm w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
+            >
+              <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                Dark Mode
+              </span>
+            </button>
+          </li> </ul>
+      </nav>         
     </div>
   );
 }

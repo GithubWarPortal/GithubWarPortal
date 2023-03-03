@@ -22,15 +22,15 @@ useEffect(() => {
 
 
   return (
-    <div class="text-xl  dark:bg-black lg:p-6  h-1/6 font-zen">
+    <div class="text-lg  dark:bg-black lg:p-6  h-1/6 font-zen">
       <nav>
         <ul class="flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
           <li>
             <button class=" w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="dark:text-amber-500 w-1/7 p-2 block hover: text-red-900 rounded-full dark:bg-black bg-white">
                 {" "}
-                <Link class="" to="/Home">
-                  Home
+                <Link class="" to="/Create">
+                  Create
                 </Link>{" "}
               </span>
             </button>
@@ -39,8 +39,8 @@ useEffect(() => {
             <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="dark:text-amber-500  dark:bg-black w-1/7 block rounded-full hover: text-red-900  p-2 bg-white">
                 {" "}
-                <Link class="" to="/Account">
-                  Account
+                <Link class="" to="/SignIn">
+                  Sign In
                 </Link>{" "}
               </span>
             </button>
@@ -67,26 +67,13 @@ useEffect(() => {
           </li>
 
 
-          <button
-            class="  w-1/7 bg-gradient-to-r hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
-            onClick={handleOpen}
-          >
-            {" "}
-            <span class="dark:text-amber-500 hover: text-red-800 hover:  p-2 w-1/7 block dark:bg-black rounded-full bg-white">
-              {" "}
-              Other
-            </span>
-          </button>
-          {open ? (
-            <div>
-              <nav>
-                <ul class="flex flex-wrap mt-2 gap-2 justify-center hover: text-center place-items-center">
+         
                   <li>
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
                       <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
                         <Link class="" to="/Validator">
-                          Card Validator
+                          Validator
                         </Link>{" "}
                       </span>
                     </button>
@@ -95,54 +82,34 @@ useEffect(() => {
                     <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
                       <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
                         {" "}
-                        <Link class="" to="/Team">
-                          Team
+                        <Link class="" to="/ContactUs">
+                          Contact
+                        </Link>{" "}
+                      </span>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                        {" "}
+                        <Link class="" to="/Admin">
+                          Admin
                         </Link>{" "}
                       </span>
                     </button>
                   </li>
 
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 w-1/7 block hover: text-red-900 p-2 dark:bg-black rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/Events">
-                          Events
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/Investing">
-                          Investing
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/OtherCreativeWorks">
-                          Other Works
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          ) : null}
+
+             
+           
+         
         <li>
             <button
               onClick={toggleTheme}
               class="text-sm w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
             >
               <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                Dark Mode
+                Dark
               </span>
             </button>
           </li> </ul>

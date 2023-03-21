@@ -1,80 +1,180 @@
+import { useState } from "react";
 export function Create() {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+  //Add frontend API's here
   return (
     <>
-      <div class="bg-white dark:bg-black text-center flex-col flex m-auto justify-center ">
-        <header class="lg:p-4 lg:m-auto lg:text-3xl lg:w-1/2 font-zen  rounded-full  bg-white bg-gradient-to-tr m-auto from-amber-500  via-red-800 to-amber-500 p-2  text-white mt-3  ">
+      <div class="m-2 bg-white dark:bg-black text-center flex-col flex justify-center">
+        <header class="lg:p-4 m-auto lg:text-3xl lg:w-1/2 max-w-md flex justify-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3">
           <h1>Create Your Own Card!</h1>
         </header>
+        <button
+          class="font-zen text-sm bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+          onClick={handleOpen}
+        >
+          How To Correctly Upload Image Files
+        </button>
+        {open ? (
+          <div>
+            <p>
+              Please upload your pictures in the order you create them below in
+              _ format!
+            </p>
+          </div>
+        ) : (
+          <div></div>
+        )}
         <section>
           <form class="flex flex-col gap-4 mt-4">
-            <section>
+            <section class="flex flex-col justify-center">
               <label htmlFor="Character Name">
-                <div class="lg:p-4 m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-white hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-                  <h1 class="p-2 bg-white rounded-full dark:bg-black text-amber-900 dark:text-amber-400">
-                    Character Name
-                  </h1>
-                </div>
+                <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  Character Name
+                </h1>
               </label>
-              <input type="text" class=""></input>
-            </section>
-            <section>
-              {" "}
-              <label htmlFor="Move 1 Name">
-                <div class="lg:p-4 m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-white hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-                  <h1 class="p-2 bg-white rounded-full dark:bg-black text-amber-900 dark:text-amber-400">
-                    Move 1 Name
-                  </h1>
-                </div>
-              </label>
-              <input type="text" class=""></input>
-            </section>
-            <section>
-              {" "}
-              <label htmlFor="Move 2 Name">
-                <div class="lg:p-4 m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-white hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-                  <h1 class="p-2 bg-white rounded-full dark:bg-black text-amber-900 dark:text-amber-400">
-                    Move 2 Name
-                  </h1>
-                </div>
-              </label>
-              <input type="text" class=""></input>
-            </section>
-            <section>
-              {" "}
-              <label htmlFor="Move 3 Name">
-                <div class="lg:p-4 m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-white hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-                  <h1 class="p-2 bg-white rounded-full dark:bg-black text-amber-900 dark:text-amber-400">
-                    Move 3 Name
-                  </h1>
-                </div>
-              </label>
-              <input type="text" class=""></input>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
             </section>
 
+            <section class="flex flex-col justify-center">
+              <label htmlFor="Move Name 1">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Move Name 1
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+              <label htmlFor="Move 1 Description">
+                <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  Move 1 Description
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+            </section>
+
+            <section class="flex flex-col justify-center">
+              <label htmlFor="Move Name 2">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Move Name 2
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+              <label htmlFor="Move 2 Description">
+                <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  Move 2 Description
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+            </section>
+
+            <section class="flex flex-col justify-center">
+              <label htmlFor="Move Name 1">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Move Name 3
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+              <label htmlFor="Move 3 Description">
+                <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  Move 3 Description
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+            </section>
+
+            <section class="flex flex-col justify-center">
+              <label htmlFor="Move Name 4">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Move Name 4
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+              <label htmlFor="Move 4 Description">
+                <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  Move 4 Description
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="text"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+            </section>
+            <section class="flex flex-col justify-center">
+              <label htmlFor="Gmail">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Gmail
+                </h1>
+              </label>
+              <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                <input
+                  type="email"
+                  class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                ></input>
+              </div>
+            </section>
             <section>
               {" "}
-              <label htmlFor="Move 4 Name">
-                <div class="lg:p-4 m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/6 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-red-900 hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-                  <h1 class="p-2 bg-white rounded-full dark:bg-black text-amber-900 dark:text-amber-400  lg:p-4">
-                    Move 4 Name
-                  </h1>
-                </div>
-              
+              <label htmlFor="Move Images">
+                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  Move Images
+                </h1>
               </label>
-                              <div class=" m-2 mt-2 lg:m-5 lg:text-3xl lg:w-1/3 w-1/3 rounded-full bg-gradient-to-tr  from-amber-500   via-red-800  to-amber-500 p-1 text-red-900 hover:from-red-800 hover:via-amber-500 hover:to-red-800 ">
-    <input
-              class="  dark:bg-black bg-white text-center placeholder-red-800 lg:p-3 mt-2 lg:m-5 lg:text-3xl rounded-full"
-              ></input></div>
+              <button class="text-center bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500  rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500">
+                Google Drive Picker
+                {/*TODO: Implement Google Drive picker API*/}
+              </button>
+              {/*TODO: have file names be shown on screen once a user picks their images*/}
             </section>
-            <label htmlFor="Gmail" class="">
-              Gmail
-              <input type="email" class="ml-4"></input>
-            </label>
-            <label htmlFor="Move Images" class="">
-              Move Images
-              <button class="ml-4">Google Drive Picker</button>
-            </label>
-            <input type="submit" value="Submit for Approval!" class=""></input>
+            {/*TODO: have file and data be sent to the backend API on submit*/}
+            <input
+              type="submit"
+              value="Submit for Approval!"
+              class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+            ></input>
           </form>
         </section>
       </div>

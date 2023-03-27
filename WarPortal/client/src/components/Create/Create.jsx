@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import Loader from "./Loader";
+import handlePicker from "./Picker";
 
 export function Create() {
   const [open, setOpen] = useState(false);
@@ -7,74 +9,9 @@ export function Create() {
     setOpen(!open);
   };
 
-  const [pickerApiLoaded, setPickerApiLoaded] = useState(false);
-  const [oauthToken, setOAuthToken] = useState(null);
   const [showPicker, setShowPicker] = useState(false);
-
-  useEffect(() => {
-    const onApiLoad = () => {
-      window.gapi.load("auth", onAuthApiLoad);
-      window.gapi.load("picker", onPickerApiLoad);
-    };
-
-    const onAuthApiLoad = () => {
-      // Initialize the Google API client with your client ID and required scopes
-      window.gapi.auth.authorize(
-        {
-          client_id: "YOUR_CLIENT_ID",
-          scope: "YOUR_SCOPES",
-          immediate: false, // Set immediate to true
-        },
-        handleAuthResult
-      );
-    };
-
-    const onPickerApiLoad = () => {
-      setPickerApiLoaded(true);
-    };
-
-    const handleAuthResult = (authResult) => {
-      if (authResult && !authResult.error) {
-        setOAuthToken(authResult.access_token);
-      }
-    };
-
-    // Load the Google API client and the Picker API
-    window.gapi.load("client:auth2:picker", onApiLoad);
-  }, []);
-
-  const handlePickerClick = () => {
-    setShowPicker(true);
-  };
-
-  const handlePickerSelect = (data) => {
-    if (data.action === window.google.picker.Action.PICKED) {
-      const fileId = data.docs[0].id;
-      console.log(`File ID: ${fileId}`);
-    }
-    setShowPicker(false);
-  };
-
-  const createPicker = () => {
-    if (pickerApiLoaded && oauthToken) {
-      const view = new window.google.picker.View(
-        window.google.picker.ViewId.DOCS
-      );
-      view.setMimeTypes("image/png,image/jpeg,image/jpg");
-      view.setSelectMultiple(false);
-
-      const picker = new window.google.picker.PickerBuilder()
-        .enableFeature(window.google.picker.Feature.NAV_HIDDEN)
-        .enableFeature(window.google.picker.Feature.MULTISELECT_ENABLED)
-        .setAppId("YOUR_APP_ID")
-        .setOAuthToken(oauthToken)
-        .addView(view)
-        .setDeveloperKey("YOUR_DEVELOPER_KEY")
-        .setCallback(handlePickerSelect)
-        .build();
-      picker.setVisible(true);
-    }
-  };
+  Loader();
+  handlePicker();
 
   //Add frontend API's here
   return (
@@ -237,7 +174,7 @@ export function Create() {
               <div>
                 <button
                   class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
-                  onClick={handlePickerClick}
+                  onClick={Loader()}
                 >
                   Select Image
                 </button>

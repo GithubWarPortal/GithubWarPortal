@@ -180,13 +180,13 @@ export function Create() {
                 </button>
                 {showPicker && createPicker()}
               </div>
-              {/*TODO: have file names be shown on screen once a user picks their images*/}
             </section>
             {/*TODO: have file and data be sent to the backend API on submit*/}
             <input
               type="submit"
               value="Submit for Approval!"
               class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+            //onClick={submit()}
             ></input>
           </form>
         </section>

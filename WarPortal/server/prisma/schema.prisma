@@ -83,3 +83,12 @@ model Newsletter {
   newsletterId Int    @id @default(autoincrement())
   email        String @unique
 }
+
+
+//TODO: Add enum for user roles
+
+//TODO: Add store owmer table
+
+//TODO: Add creator table
+
+//TODO: Add creator submission table

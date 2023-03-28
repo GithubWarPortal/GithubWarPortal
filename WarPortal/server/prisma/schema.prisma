@@ -23,7 +23,7 @@ model Characters {
 }
 
 model CharacterStorage {
-  cardId      String          @id @default(uuid())
+  cardId      String       @id @default(uuid())
   characterId String       @default(uuid())
   storage     UsersCards[]
 
@@ -32,15 +32,18 @@ model CharacterStorage {
 }
 
 model User {
-  id         String          @id @default(uuid())
+  id         String       @id @default(uuid())
   username   String
   name       String
   email      String
   dtEnd      DateTime?
-  cartId     String          @unique
+  cartId     String       @unique
   Cart       Cart[]
   Purchases  Purchases[]
   UsersCards UsersCards[]
+  role       Role         @default(USER)
+  StoreOwner StoreOwner?
+  Creator    Creator?
 
   @@unique([id, cartId, email, username])
   @@index([id])
@@ -58,7 +61,7 @@ model Cart {
 }
 
 model Purchases {
-  userId         String      @id
+  userId         String   @id
   dtPurchased    DateTime @default(now())
   purchaseAmount Float
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -84,11 +87,48 @@ model Newsletter {
   email        String @unique
 }
 
+enum Role {
+  USER
+  CREATOR
+  STORE
+  ADMIN
+}
 
-//TODO: Add enum for user roles
+model StoreOwner {
+  storeOwnerId String @unique @default(uuid())
+  connectIds   User   @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role         Role   @default(STORE)
+  firstName    String
+  lastName     String
+  storeAddress String
+  phoneNumber  Int
+  email        String
+  password     String
+}
 
-//TODO: Add store owmer table
+model Creator {
+  userId         String @unique @default(uuid())
+  connectCreator User   @relation(fields: [userId], references: [id])
+  CreatorId      String @default(uuid())
+  firstName      String
+  lastName       String
+  email          String
+  password       String
+}
 
-//TODO: Add creator table
-
-//TODO: Add creator submission table
+model Approval {
+  submissionId         String  @unique @default(uuid())
+  Role                 Role
+  userId               String
+  cardName             String
+  moveOne              String
+  moveOneDescription   String
+  moveTwo              String
+  moveTwoDescription   String
+  moveThree            String
+  moveThreeDescription String
+  moveFour             String
+  moveFourDescription  String
+  gmail                String
+  approved             Boolean
+}

@@ -95,40 +95,56 @@ enum Role {
 }
 
 model StoreOwner {
-  storeOwnerId String @unique @default(uuid())
-  connectIds   User   @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  role         Role   @default(STORE)
+  storeOwnerId String     @unique @default(uuid())
+  connectIds   User       @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role         Role       @default(STORE)
   firstName    String
   lastName     String
   storeAddress String
   phoneNumber  Int
   email        String
   password     String
+  submissionId Approval[]
+
+  @@index([storeOwnerId])
 }
 
 model Creator {
-  userId         String @unique @default(uuid())
-  connectCreator User   @relation(fields: [userId], references: [id])
-  CreatorId      String @default(uuid())
+  userId         String     @unique @default(uuid())
+  role           Role       @default(CREATOR)
+  connectCreator User       @relation(fields: [userId], references: [id])
+  creatorId      String     @default(uuid())
   firstName      String
   lastName       String
   email          String
   password       String
+  submissionId   Approval[]
+
+  @@index([userId])
+  @@index([creatorId])
 }
 
 model Approval {
-  submissionId         String  @unique @default(uuid())
+  submissionId         String      @unique @default(uuid())
   Role                 Role
   userId               String
   cardName             String
   moveOne              String
-  moveOneDescription   String
+  moveOneDescription   String      @db.Text
   moveTwo              String
-  moveTwoDescription   String
+  moveTwoDescription   String      @db.Text
   moveThree            String
-  moveThreeDescription String
+  moveThreeDescription String      @db.Text
   moveFour             String
-  moveFourDescription  String
+  moveFourDescription  String      @db.Text
   gmail                String
   approved             Boolean
+  StoreOwner           StoreOwner? @relation(fields: [storeOwnerId], references: [storeOwnerId])
+  storeOwnerId         String?
+  Creator              Creator?    @relation(fields: [creatorId], references: [userId])
+  creatorId        String?
+
+  @@index([submissionId])
+  @@index([storeOwnerId])
+  @@index([creatorId])
 }

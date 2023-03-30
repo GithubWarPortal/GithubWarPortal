@@ -1,11 +1,17 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
 
+//creates prisma client
 const prisma = new PrismaClient();
+
+//creates submission router
 const submissionRouter = express.Router();
+
+//Backend API
 submissionRouter.post("/", async (req, res) => {
-  //TODO: take in form data and assign it to variables
-  const moveOne = req.body.moveOne;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  //assigns variables to user input from the frontend
+  const name = req.body.name;
+  const moveOne = req.body.moveOne;
   const moveOneDescription = req.body.moveOneDescription;
   const moveTwo = req.body.moveTwo;
   const moveTwoDescription = req.body.moveTwoDescription;
@@ -14,5 +20,23 @@ submissionRouter.post("/", async (req, res) => {
   const moveFour = req.body.moveFour;
   const moveFourDescription = req.body.moveFourDescription;
   const gmail = req.body.gmail;
-  //TODO: store them in the database
+
+  //run a prisma query to store the data in the database
+  const submission = await prisma.approval.create({
+    data: {
+      name: name,
+      moveOne: moveOne,
+      moveOneDescription: moveOneDescription,
+      moveTwo: moveTwo,
+      moveTwoDescription: moveTwoDescription,
+      moveThree: moveThree,
+      moveThreeDescription: moveThreeDescription,
+      moveFour: moveFour,
+      moveFourDescription: moveFourDescription,
+      gmail: gmail,
+    },
+  });
+  console.log(submission);
+  res.send("Successfully Submitted!");
 });
+export default submissionRouter;

@@ -138,11 +138,11 @@ model Approval {
   moveFour             String
   moveFourDescription  String      @db.Text
   gmail                String
-  approved             Boolean
+  approved             Boolean     @default(false)
   StoreOwner           StoreOwner? @relation(fields: [storeOwnerId], references: [storeOwnerId])
   storeOwnerId         String?
   Creator              Creator?    @relation(fields: [creatorId], references: [userId])
-  creatorId        String?
+  creatorId            String?
 
   @@index([submissionId])
   @@index([storeOwnerId])

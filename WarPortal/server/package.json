@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@prisma/client": "^4.8.1",
+    "@prisma/client": "^4.12.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -23,7 +23,7 @@
     "nodemon": "^2.0.20",
     "npm": "^8.19.2",
     "planetscale-node": "^0.3.0",
-    "prisma": "^4.9.0"
+    "prisma": "^4.12.0"
   },
   "start_url": "http://localhost:5000",
   "dependencies": {

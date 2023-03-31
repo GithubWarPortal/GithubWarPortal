@@ -126,8 +126,8 @@ model Creator {
 
 model Approval {
   submissionId         String      @unique @default(uuid())
-  Role                 Role
-  userId               String
+  Role                 Role @default(CREATOR)
+  userId               String?
   cardName             String
   moveOne              String
   moveOneDescription   String      @db.Text

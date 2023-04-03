@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useDrivePicker from "react-google-drive-picker";
-import handlePicker from "./Loader";
+
 
 export function Create() {
   const [open, setOpen] = useState(false);

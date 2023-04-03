@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Loader from "./Loader";
-import handlePicker from "./Picker";
+import { useState, useEffect } from "react";
+import useDrivePicker from "react-google-drive-picker";
+import handlePicker from "./Loader";
 
 export function Create() {
   const [open, setOpen] = useState(false);
@@ -9,10 +9,6 @@ export function Create() {
     setOpen(!open);
   };
 
-  const [showPicker, setShowPicker] = useState(false);
-  Loader();
-  handlePicker();
-  
   const [userInput, setUserInput] = useState({
     cardName: "",
     moveOne: "",
@@ -30,7 +26,7 @@ export function Create() {
     setUserInput({ ...userInput, [event.target.name]: event.target.value });
   };
   console.log(userInput);
-  const [responseData, setResponseData] = useState([]);
+
   const handleSubmit = async (event, req, res) => {
     event.preventDefault();
     try {
@@ -53,10 +49,32 @@ export function Create() {
         }),
       });
       console.log(submit);
-      alert("Thank you for your submission!")
+      alert("Thank you for your submission!");
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const [openPicker, authResponse] = useDrivePicker();
+  // const customViewsArray = [new google.picker.DocsView()]; // custom view
+  const handleOpenPicker = () => {
+    openPicker({
+      clientId: "xxxxxxxxxxxxxxxxx",
+      developerKey: "xxxxxxxxxxxx",
+      viewId: "DOCS",
+      // token: token, // pass oauth token in case you already have one
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: true,
+      // customViews: customViewsArray, // custom view
+      callbackFunction: (data) => {
+        if (data.action === "cancel") {
+          console.log("User clicked cancel/close button");
+        }
+        console.log(data);
+      },
+    });
   };
 
   //Add frontend API's here
@@ -82,11 +100,11 @@ export function Create() {
         ) : (
           <div></div>
         )}
+        <div>
+          <button onClick={() => handleOpenPicker()}>Select File</button>
+        </div>
         <section>
-          <form
-            onSubmit={handleSubmit}
-            class="flex flex-col gap-4 mt-4"
-          >
+          <form onSubmit={handleSubmit} class="flex flex-col gap-4 mt-4">
             <section class="flex flex-col justify-center">
               <label htmlFor="Character Name">
                 <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
@@ -264,8 +282,6 @@ export function Create() {
               </div>
             </section>
 
-            {showPicker && createPicker()}
-
             {/*TODO: have file and data be sent to the backend API on submit*/}
             <input
               type="submit"
@@ -273,7 +289,6 @@ export function Create() {
               class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
             ></input>
           </form>
-
         </section>
       </div>
     </>

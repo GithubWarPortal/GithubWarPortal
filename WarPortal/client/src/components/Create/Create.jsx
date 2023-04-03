@@ -12,6 +12,52 @@ export function Create() {
   const [showPicker, setShowPicker] = useState(false);
   Loader();
   handlePicker();
+  
+  const [userInput, setUserInput] = useState({
+    cardName: "",
+    moveOne: "",
+    moveOneDescription: "",
+    moveTwo: "",
+    moveTwoDescription: "",
+    moveThree: "",
+    moveThreeDescription: "",
+    moveFour: "",
+    moveFourDescription: "",
+    gmail: "",
+  });
+  console.log(userInput);
+  const handleChange = (event) => {
+    setUserInput({ ...userInput, [event.target.name]: event.target.value });
+  };
+  console.log(userInput);
+  const [responseData, setResponseData] = useState([]);
+  const handleSubmit = async (event, req, res) => {
+    event.preventDefault();
+    try {
+      const submit = fetch("http://localhost:5000/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cardName: userInput.cardName,
+          moveOne: userInput.moveOne,
+          moveOneDescription: userInput.moveOneDescription,
+          moveTwo: userInput.moveTwo,
+          moveTwoDescription: userInput.moveTwoDescription,
+          moveThree: userInput.moveThree,
+          moveThreeDescription: userInput.moveThreeDescription,
+          moveFour: userInput.moveFour,
+          moveFourDescription: userInput.moveFourDescription,
+          gmail: userInput.gmail,
+        }),
+      });
+      console.log(submit);
+      alert("Thank you for your submission!")
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   //Add frontend API's here
   return (
@@ -37,7 +83,10 @@ export function Create() {
           <div></div>
         )}
         <section>
-          <form class="flex flex-col gap-4 mt-4">
+          <form
+            onSubmit={handleSubmit}
+            class="flex flex-col gap-4 mt-4"
+          >
             <section class="flex flex-col justify-center">
               <label htmlFor="Character Name">
                 <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
@@ -48,6 +97,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="cardName"
+                  placeholder="Enter Here"
+                  value={userInput.cardName}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
@@ -62,6 +116,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveOne"
+                  placeholder="Enter Here"
+                  value={userInput.moveOne}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
               <label htmlFor="Move 1 Description">
@@ -73,6 +132,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveOneDescription"
+                  placeholder="Enter Here"
+                  value={userInput.moveOneDescription}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
@@ -87,6 +151,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveTwo"
+                  placeholder="Enter Here"
+                  value={userInput.moveTwo}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
               <label htmlFor="Move 2 Description">
@@ -98,12 +167,17 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveTwoDescription"
+                  placeholder="Enter Here"
+                  value={userInput.moveTwoDescription}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
 
             <section class="flex flex-col justify-center">
-              <label htmlFor="Move Name 1">
+              <label htmlFor="Move Name 3">
                 <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                   Move Name 3
                 </h1>
@@ -112,6 +186,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveThree"
+                  placeholder="Enter Here"
+                  value={userInput.moveThree}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
               <label htmlFor="Move 3 Description">
@@ -123,6 +202,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveThreeDescription"
+                  placeholder="Enter Here"
+                  value={userInput.moveThreeDescription}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
@@ -137,6 +221,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveFour"
+                  placeholder="Enter Here"
+                  value={userInput.moveFour}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
               <label htmlFor="Move 4 Description">
@@ -148,6 +237,11 @@ export function Create() {
                 <input
                   type="text"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  name="moveFourDescription"
+                  placeholder="Enter Here"
+                  value={userInput.moveFourDescription}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
@@ -161,34 +255,25 @@ export function Create() {
                 <input
                   type="email"
                   class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                  placeholder="Enter Here"
+                  name="gmail"
+                  value={userInput.gmail}
+                  onChange={handleChange}
+                  required
                 ></input>
               </div>
             </section>
-            <section>
-              {" "}
-              <label htmlFor="Move Images">
-                <h1 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
-                  Move Images
-                </h1>
-              </label>
-              <div>
-                <button
-                  class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
-                  onClick={Loader()}
-                >
-                  Select Image
-                </button>
-                {showPicker && createPicker()}
-              </div>
-            </section>
+
+            {showPicker && createPicker()}
+
             {/*TODO: have file and data be sent to the backend API on submit*/}
             <input
               type="submit"
               value="Submit for Approval!"
               class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
-            //onClick={submit()}
             ></input>
           </form>
+
         </section>
       </div>
     </>

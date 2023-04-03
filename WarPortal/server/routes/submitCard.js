@@ -10,7 +10,7 @@ const submissionRouter = express.Router();
 //Backend API
 submissionRouter.post("/", async (req, res) => {
   //assigns variables to user input from the frontend
-  const name = req.body.name;
+  const cardName = req.body.cardName;
   const moveOne = req.body.moveOne;
   const moveOneDescription = req.body.moveOneDescription;
   const moveTwo = req.body.moveTwo;
@@ -24,7 +24,7 @@ submissionRouter.post("/", async (req, res) => {
   //run a prisma query to store the data in the database
   const submission = await prisma.approval.create({
     data: {
-      name: name,
+      cardName: cardName,
       moveOne: moveOne,
       moveOneDescription: moveOneDescription,
       moveTwo: moveTwo,
@@ -37,6 +37,6 @@ submissionRouter.post("/", async (req, res) => {
     },
   });
   console.log(submission);
-  res.send("Successfully Submitted!");
+ 
 });
 export default submissionRouter;

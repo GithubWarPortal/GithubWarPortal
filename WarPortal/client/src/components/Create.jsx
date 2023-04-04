@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useDrivePicker from "react-google-drive-picker";
 
 
@@ -58,9 +58,11 @@ export function Create() {
   const [openPicker, authResponse] = useDrivePicker();
   // const customViewsArray = [new google.picker.DocsView()]; // custom view
   const handleOpenPicker = () => {
+    VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID
+    VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY
     openPicker({
-      clientId: "xxxxxxxxxxxxxxxxx",
-      developerKey: "xxxxxxxxxxxx",
+      clientId: VITE_CLIENT_ID,
+      developerKey: VITE_DEVELOPER_KEY,
       viewId: "DOCS",
       // token: token, // pass oauth token in case you already have one
       showUploadView: true,
@@ -80,7 +82,7 @@ export function Create() {
   //Add frontend API's here
   return (
     <>
-      <div class="m-2 bg-white dark:bg-black text-center flex-col flex justify-center">
+      <div class=" bg-white dark:bg-black text-center flex-col flex justify-center">
         <header class="lg:p-4 m-auto lg:text-3xl lg:w-1/2 max-w-md flex justify-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3">
           <h1>Create Your Own Card!</h1>
         </header>

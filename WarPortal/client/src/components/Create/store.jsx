@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useDrivePicker from "react-google-drive-picker";
 
-export function Create() {
+export default function StoreOwner() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -19,6 +19,7 @@ export function Create() {
     moveFour: "",
     moveFourDescription: "",
     gmail: "",
+    storeOwnerId: "",
   });
   console.log(userInput);
   const handleChange = (event) => {
@@ -45,6 +46,7 @@ export function Create() {
           moveFour: userInput.moveFour,
           moveFourDescription: userInput.moveFourDescription,
           gmail: userInput.gmail,
+          storeOwnerId: "",
         }),
       });
       console.log(submit);
@@ -288,7 +290,24 @@ export function Create() {
                   ></input>
                 </div>
               </section>
-
+              <section>
+                <label htmlFor="Store Owner ID">
+                  <h1 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                    Store Owner ID
+                  </h1>
+                </label>
+                <div class="lg:text-3xl w-full m-auto mt-2 text-sm rounded-full bg-gradient-to-tl p-1 text-red-900 from-red-800 via-amber-500 to-red-800 hover:from-amber-500 focus:from-amber-500 focus:to-amber-500 focus:via-red-800 hover:to-amber-500 hover:via-red-800">
+                  <input
+                    type="text"
+                    class="bg-white w-full flex p-4 justify-center m-auto align-middle dark:bg-black text-red-900 dark:text-amber-400 rounded-full text-center"
+                    name="storeOwnerId"
+                    placeholder="Enter Here"
+                    value={userInput.storeOwnerId}
+                    onChange={handleChange}
+                    required
+                  ></input>
+                </div>
+              </section>
               <input
                 type="submit"
                 value="Submit for Approval!"

@@ -1,7 +1,7 @@
-import * as React from "react";
+import {useState} from "react"
 
 export default function Footer() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(!open);

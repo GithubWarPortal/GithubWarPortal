@@ -23,7 +23,7 @@ model Characters {
 }
 
 model CharacterStorage {
-  cardId      String          @id @default(uuid())
+  cardId      String       @id @default(uuid())
   characterId String       @default(uuid())
   storage     UsersCards[]
 
@@ -32,15 +32,18 @@ model CharacterStorage {
 }
 
 model User {
-  id         String          @id @default(uuid())
+  id         String       @id @default(uuid())
   username   String
   name       String
   email      String
   dtEnd      DateTime?
-  cartId     String          @unique
+  cartId     String       @unique
   Cart       Cart[]
   Purchases  Purchases[]
   UsersCards UsersCards[]
+  role       Role         @default(USER)
+  StoreOwner StoreOwner?
+  Creator    Creator?
 
   @@unique([id, cartId, email, username])
   @@index([id])
@@ -58,7 +61,7 @@ model Cart {
 }
 
 model Purchases {
-  userId         String      @id
+  userId         String   @id
   dtPurchased    DateTime @default(now())
   purchaseAmount Float
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -82,4 +85,72 @@ model UsersCards {
 model Newsletter {
   newsletterId Int    @id @default(autoincrement())
   email        String @unique
+}
+
+enum Role {
+  USER
+  CREATOR
+  STORE
+  ADMIN
+}
+
+model StoreOwner {
+  storeOwnerId String     @unique @default(uuid())
+  connectIds   User       @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role         Role       @default(STORE)
+  firstName    String
+  lastName     String
+  storeAddress String
+  phoneNumber  Int
+  email        String
+  password     String
+  submissionId Approval[]
+
+  @@index([storeOwnerId])
+}
+
+model Creator {
+  userId         String     @unique @default(uuid())
+  role           Role       @default(CREATOR)
+  connectCreator User       @relation(fields: [userId], references: [id])
+  creatorId      String     @default(uuid())
+  firstName      String
+  lastName       String
+  email          String
+  password       String
+  submissionId   Approval[]
+
+  @@index([userId])
+  @@index([creatorId])
+}
+
+model Admin {
+  adminId  Int    @unique @default(autoincrement())
+  username String
+  password String
+}
+
+model Approval {
+  submissionId         String      @unique @default(uuid())
+  Role                 Role        @default(CREATOR)
+  cardName             String
+  moveOne              String
+  moveOneDescription   String      @db.Text
+  moveTwo              String
+  moveTwoDescription   String      @db.Text
+  moveThree            String
+  moveThreeDescription String      @db.Text
+  moveFour             String
+  moveFourDescription  String      @db.Text
+  gmail                String
+  approved             Boolean     @default(false)
+  StoreOwner           StoreOwner? @relation(fields: [storeOwnerId], references: [storeOwnerId])
+  storeOwnerId         String?
+  Creator              Creator?    @relation(fields: [creatorId], references: [userId])
+  creatorId            String?
+  submissionDate       DateTime    @default(now())
+
+  @@index([submissionId])
+  @@index([storeOwnerId])
+  @@index([creatorId])
 }

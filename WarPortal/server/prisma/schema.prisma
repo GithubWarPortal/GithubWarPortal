@@ -124,10 +124,15 @@ model Creator {
   @@index([creatorId])
 }
 
+model Admin {
+  adminId  Int    @unique @default(autoincrement())
+  username String
+  password String
+}
+
 model Approval {
   submissionId         String      @unique @default(uuid())
-  Role                 Role @default(CREATOR)
-  userId               String?
+  Role                 Role        @default(CREATOR)
   cardName             String
   moveOne              String
   moveOneDescription   String      @db.Text
@@ -143,6 +148,7 @@ model Approval {
   storeOwnerId         String?
   Creator              Creator?    @relation(fields: [creatorId], references: [userId])
   creatorId            String?
+  submissionDate       DateTime    @default(now())
 
   @@index([submissionId])
   @@index([storeOwnerId])

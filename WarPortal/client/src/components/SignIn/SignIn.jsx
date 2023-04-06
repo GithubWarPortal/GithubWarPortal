@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-export default function Create() {
+export default function SignIn() {
   return (
     <>
     
@@ -7,7 +7,7 @@ export default function Create() {
       <button class=" bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
         <span class="dark:text-amber-500 dark:bg-black  block hover: text-red-900 p-2 rounded-full bg-white">
           {" "}
-          <Link class="p-4" to="/StoreOwner">
+          <Link class="p-4" to="/StoreOwnerSignIn">
             Store Owners
           </Link>{" "}
         </span>
@@ -16,7 +16,7 @@ export default function Create() {
       <button class=" bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
         <span class="dark:text-amber-500 dark:bg-black  block hover: text-red-900 p-2 rounded-full bg-white">
           {" "}
-          <Link class="p-4" to="/Creator">
+          <Link class="p-4" to="/CreatorSignIn">
             Creators
           </Link>{" "}
         </span>

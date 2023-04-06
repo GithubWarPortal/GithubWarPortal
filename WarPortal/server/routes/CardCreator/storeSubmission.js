@@ -5,10 +5,10 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 //creates submission router
-const submissionRouter = express.Router();
+const storeSubmissionRouter = express.Router();
 
 //Backend API
-submissionRouter.post("/", async (req, res) => {
+storeSubmissionRouter.post("/", async (req, res) => {
   //assigns variables to user input from the frontend
   const cardName = req.body.cardName;
   const moveOne = req.body.moveOne;
@@ -20,6 +20,7 @@ submissionRouter.post("/", async (req, res) => {
   const moveFour = req.body.moveFour;
   const moveFourDescription = req.body.moveFourDescription;
   const gmail = req.body.gmail;
+  const storeOwnerId = req.body.storeOwnerId;
 
   //run a prisma query to store the data in the database
   const submission = await prisma.approval.create({
@@ -34,9 +35,10 @@ submissionRouter.post("/", async (req, res) => {
       moveFour: moveFour,
       moveFourDescription: moveFourDescription,
       gmail: gmail,
+      storeOwnerId: storeOwnerId
     },
   });
   console.log(submission);
  
 });
-export default submissionRouter;
+export default storeSubmissionRouter;

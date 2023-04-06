@@ -30,7 +30,7 @@ export default function StoreOwner() {
   const handleSubmit = async (event, req, res) => {
     event.preventDefault();
     try {
-      const submit = fetch("http://localhost:5000/submit", {
+      const submit = fetch("http://localhost:5000/StoreSubmission", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function StoreOwner() {
           moveFour: userInput.moveFour,
           moveFourDescription: userInput.moveFourDescription,
           gmail: userInput.gmail,
-          storeOwnerId: "",
+          storeOwnerId: userInput.storeOwnerId,
         }),
       });
       console.log(submit);

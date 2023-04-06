@@ -30,7 +30,7 @@ export default function Creator() {
   const handleSubmit = async (event, req, res) => {
     event.preventDefault();
     try {
-      const submit = fetch("http://localhost:5000/submit", {
+      const submit = fetch("http://localhost:5000/CreatorSubmission", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

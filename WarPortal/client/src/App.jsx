@@ -14,7 +14,7 @@ import CreatorSignIn from "./components/SignIn/Creator.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer.jsx";
 import CardValidator from "./components/CardValidator";
-import Stripe from "./components/Create/stripe.jsx"
+import CreatorStripe from "./components/Stripe/creator.jsx"
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
           <Route path="/Creator" element={<Creator />} />
           <Route path="/StoreOwnerSignIn" element={<StoreOwnerSignIn />} />
           <Route path="/CreatorSignIn" element={<CreatorSignIn />} />
-          <Route path="/Stripe" element={<Stripe />} />
+          <Route path="/CreatorStripe" element={<CreatorStripe />} />
 
         </Routes>
       </BrowserRouter>

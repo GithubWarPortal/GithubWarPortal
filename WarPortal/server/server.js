@@ -23,6 +23,6 @@ app.use("/StoreSubmission", storeSubmissionRouter);
 app.use("/CreatorSubmission", creatorSubmissionRouter);
 app.use("/CreatorSignIn", creatorSignInRouter);
 app.use("/StoreSignIn", storeSignInRouter);
-
-
+//app.use("/StripeCreator", stripeCreatorRouter);
+//app.use("/StripeStore", stripeStoreRouter);
 app.listen(port, () => console.log(`Server is running on port ${port}`));

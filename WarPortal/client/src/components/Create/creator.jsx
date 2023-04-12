@@ -3,7 +3,10 @@ import useDrivePicker from "react-google-drive-picker";
 
 export default function Creator() {
   const [open, setOpen] = useState(false);
-
+if (!sessionId){
+  useNavigate("/Creator"
+  )
+}
   const handleOpen = () => {
     setOpen(!open);
   };

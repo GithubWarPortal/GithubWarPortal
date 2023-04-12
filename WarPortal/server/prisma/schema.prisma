@@ -104,7 +104,9 @@ model StoreOwner {
   phoneNumber  Int
   email        String
   password     String
+  stripeCustomerId String?
   submissionId Approval[]
+  isActive Boolean @default(false)
 
   @@index([storeOwnerId])
 }
@@ -118,8 +120,9 @@ model Creator {
   lastName       String
   email          String
   password       String
+  stripeCustomerId String?
   submissionId   Approval[]
-
+  isActive Boolean @default(false)
   @@index([userId])
   @@index([creatorId])
 }

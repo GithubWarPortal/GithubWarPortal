@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const ProductDisplay = () => (
   <section>
     <div className="product">
@@ -59,6 +59,7 @@ export default function CreatorStripe() {
     if (query.get('success')) {
       setSuccess(true);
       setSessionId(query.get('session_id'));
+      useNavigate("/Creator")
     }
 
     if (query.get('canceled')) {
@@ -66,6 +67,7 @@ export default function CreatorStripe() {
       setMessage(
         "Order canceled -- continue to shop around and checkout when you're ready."
       );
+      useNavigate("/CreatorStripe")
     }
   }, [sessionId]);
 

@@ -3,10 +3,7 @@ import useDrivePicker from "react-google-drive-picker";
 
 export default function Creator() {
   const [open, setOpen] = useState(false);
-if (!sessionId){
-  useNavigate("/Creator"
-  )
-}
+
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -49,7 +46,7 @@ if (!sessionId){
           moveFour: userInput.moveFour,
           moveFourDescription: userInput.moveFourDescription,
           gmail: userInput.gmail,
-          creatorId: userInput.creatorId
+          creatorId: userInput.creatorId,
         }),
       });
       console.log(submit);
@@ -137,7 +134,11 @@ if (!sessionId){
               </section>
 
               <section class="flex flex-col justify-center">
-              <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3"><h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">Move 1</h1></div> 
+                <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3">
+                  <h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">
+                    Move 1
+                  </h1>
+                </div>
 
                 <label htmlFor="Move Name 1">
                   <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
@@ -174,7 +175,11 @@ if (!sessionId){
               </section>
 
               <section class="flex flex-col justify-center">
-              <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3"><h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">Move 2</h1></div> 
+                <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3">
+                  <h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">
+                    Move 2
+                  </h1>
+                </div>
 
                 <label htmlFor="Move Name 2">
                   <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
@@ -211,7 +216,11 @@ if (!sessionId){
               </section>
 
               <section class="flex flex-col justify-center">
-              <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3"><h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">Move 3</h1></div> 
+                <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3">
+                  <h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">
+                    Move 3
+                  </h1>
+                </div>
 
                 <label htmlFor="Move Name 3">
                   <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
@@ -248,7 +257,11 @@ if (!sessionId){
               </section>
 
               <section class="flex flex-col justify-center">
-              <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3"><h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">Move 4</h1></div> 
+                <div class="m-auto font-zen bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full w-1/3">
+                  <h1 class="dark:text-amber-500 dark:bg-black m-auto hover: text-red-900 p-2 rounded-full bg-white">
+                    Move 4
+                  </h1>
+                </div>
 
                 <label htmlFor="Move Name 4">
                   <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">

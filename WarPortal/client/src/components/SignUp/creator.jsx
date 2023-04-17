@@ -16,7 +16,7 @@ export default function CreatorSignUp() {
         lastName: userInput.lastName,
         email: userInput.email,
         password: userInput.password,
-        userId: userInput.userId,
+      
       }),
     });
     console.log(creator);

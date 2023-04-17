@@ -42,8 +42,6 @@ model User {
   Purchases  Purchases[]
   UsersCards UsersCards[]
   role       Role         @default(USER)
-  StoreOwner StoreOwner?
-  Creator    Creator?
 
   @@unique([id, cartId, email, username])
   @@index([id])
@@ -95,36 +93,33 @@ enum Role {
 }
 
 model StoreOwner {
-  storeOwnerId     String     @unique @default(uuid())
-  connectIds       User       @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  role             Role       @default(STORE)
-  firstName        String
-  lastName         String
-  storeAddress     String
-  phoneNumber      Int
-  email            String
-  password         String
-  stripeCustomerId String?
-  submissionId     Approval[]
-  isActive         Boolean    @default(false)
+  storeOwnerId        String     @unique @default(uuid())
+  role                Role       @default(STORE)
+  firstName           String
+  lastName            String
+  storeName           String?
+  storeAddress        String
+  phone               String?
+  email               String
+  password            String
+  stripeCustomerId    String?
+  creatorSubmissionId Approval[]
+  isActive            Boolean    @default(true)
 
   @@index([storeOwnerId])
 }
 
 model Creator {
-  creatorId String @unique @default(uuid())
-  role      Role   @default(CREATOR)
-  firstName        String
-  lastName         String
-  email            String     @unique
-  password         String
-  userId           String?    @unique
-  connectCreator   User?      @relation(fields: [userId], references: [id])
-  stripeCustomerId String?
-  submissionId     Approval[]
-  isActive         Boolean    @default(true)
+  creatorId         String     @unique @default(uuid())
+  role              Role       @default(CREATOR)
+  firstName         String
+  lastName          String
+  email             String     @unique
+  password          String
+  stripeCustomerId  String?
+  storeSubmissionId Approval[]
+  isActive          Boolean    @default(true)
 
-  @@index([userId])
   @@index([creatorId])
 }
 
@@ -135,26 +130,26 @@ model Admin {
 }
 
 model Approval {
-  submissionId         String      @unique @default(uuid())
-  Role                 Role        @default(CREATOR)
-  cardName             String
-  moveOne              String
-  moveOneDescription   String      @db.Text
-  moveTwo              String
-  moveTwoDescription   String      @db.Text
-  moveThree            String
-  moveThreeDescription String      @db.Text
-  moveFour             String
-  moveFourDescription  String      @db.Text
-  gmail                String
-  approved             Boolean     @default(false)
-  StoreOwner           StoreOwner? @relation(fields: [storeOwnerId], references: [storeOwnerId])
-  storeOwnerId         String?
-  Creator              Creator?    @relation(fields: [creatorId], references: [userId])
-  creatorId            String?
-  submissionDate       DateTime    @default(now())
+  submissionId           String      @unique @default(uuid())
+  Role                   Role        @default(CREATOR)
+  cardName               String
+  moveOne                String
+  moveOneDescription     String      @db.Text
+  moveTwo                String
+  moveTwoDescription     String      @db.Text
+  moveThree              String
+  moveThreeDescription   String      @db.Text
+  moveFour               String
+  moveFourDescription    String      @db.Text
+  gmail                  String
+  approved               Boolean     @default(false)
+  submissionDate         DateTime    @default(now())
+  StoreOwner             StoreOwner? @relation(fields: [StoreOwnerId], references: [storeOwnerId])
+  StoreOwnerId String?
+  Creator                Creator?    @relation(fields: [CreatorId], references: [creatorId])
+  CreatorId       String?
 
   @@index([submissionId])
-  @@index([storeOwnerId])
-  @@index([creatorId])
+  @@index([StoreOwnerId])
+  @@index([CreatorId])
 }

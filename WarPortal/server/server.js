@@ -11,7 +11,7 @@ import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
 import creatorWebhookRouter from "./routes/Stripe/creatorWebhook.js";
 import createCreatorRouter from "./routes/SignUp/creator.js";
-
+import createStoreRouter from "./routes/SignUp/store.js";
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -42,5 +42,6 @@ app.use("/webhook-creator", creatorWebhookRouter);
 
 //Routes for sign up
 app.use("/CreateCreator", createCreatorRouter)
+app.use("/CreateStore", createStoreRouter)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

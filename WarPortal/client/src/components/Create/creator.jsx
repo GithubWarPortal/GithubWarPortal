@@ -19,7 +19,7 @@ export default function Creator() {
     moveFour: "",
     moveFourDescription: "",
     gmail: "",
-    storeOwnerId: "",
+    creatorId: "",
   });
   console.log(userInput);
   const handleChange = (event) => {

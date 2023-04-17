@@ -17,6 +17,7 @@ import CardValidator from "./components/CardValidator";
 import CreatorStripe from "./components/Stripe/creator.jsx";
 import SignUp from "./components/SignUp/SignUp.jsx"
 import CreatorSignUp from "./components/SignUp/creator.jsx";
+import StoreOwnerSignUp from "./components/SignUp/store";
 function App() {
   return (
     <>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/CreatorStripe" element={<CreatorStripe />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/CreatorSignUp" element={<CreatorSignUp />} />
+          <Route path="/StoreOwnerSignUp" element={<StoreOwnerSignUp />} />
         </Routes>
       </BrowserRouter>
       <Footer />

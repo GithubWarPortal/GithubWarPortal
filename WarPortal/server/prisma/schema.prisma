@@ -95,34 +95,35 @@ enum Role {
 }
 
 model StoreOwner {
-  storeOwnerId String     @unique @default(uuid())
-  connectIds   User       @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  role         Role       @default(STORE)
-  firstName    String
-  lastName     String
-  storeAddress String
-  phoneNumber  Int
-  email        String
-  password     String
+  storeOwnerId     String     @unique @default(uuid())
+  connectIds       User       @relation(fields: [storeOwnerId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  role             Role       @default(STORE)
+  firstName        String
+  lastName         String
+  storeAddress     String
+  phoneNumber      Int
+  email            String
+  password         String
   stripeCustomerId String?
-  submissionId Approval[]
-  isActive Boolean @default(false)
+  submissionId     Approval[]
+  isActive         Boolean    @default(false)
 
   @@index([storeOwnerId])
 }
 
 model Creator {
-  userId         String     @unique @default(uuid())
-  role           Role       @default(CREATOR)
-  connectCreator User       @relation(fields: [userId], references: [id])
-  creatorId      String     @default(uuid())
-  firstName      String
-  lastName       String
-  email          String
-  password       String
+  creatorId String @unique @default(uuid())
+  role      Role   @default(CREATOR)
+  firstName        String
+  lastName         String
+  email            String     @unique
+  password         String
+  userId           String?    @unique
+  connectCreator   User?      @relation(fields: [userId], references: [id])
   stripeCustomerId String?
-  submissionId   Approval[]
-  isActive Boolean @default(false)
+  submissionId     Approval[]
+  isActive         Boolean    @default(true)
+
   @@index([userId])
   @@index([creatorId])
 }

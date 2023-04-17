@@ -10,6 +10,7 @@ import storeSignInRouter from "./routes/SignIn/store.js";
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
 import creatorWebhookRouter from "./routes/Stripe/creatorWebhook.js";
+import createCreatorRouter from "./routes/SignUp/creator.js";
 
 const port = process.env.PORT || 5000;
 
@@ -39,5 +40,7 @@ app.use("/webhook-creator", creatorWebhookRouter);
 //app.use("/create-creator-portal-session", stripeStoreRouter);
 //app.use("/webhook-creator", stripeStoreRouter);
 
+//Routes for sign up
+app.use("/CreateCreator", createCreatorRouter)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -1,26 +1,96 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Admin() {
-    return (
-      <>
-           <div class="p-6 md:text-2xl font-zen text-lg  m-auto flex md:flex-row flex-col justify-center text-center  bg-white dark:bg-black gap-4 ">
+    const [userInput, setUserInput] = useState({
+    username: "",
+    password: "",
+  });
 
+  const [isUserAdmin, setIsUserAdmin] = useState();
 
-      <button class=" bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
-        <span class="dark:text-amber-500 dark:bg-black  block hover: text-red-900 p-2 rounded-full bg-white">
-          {" "}
-          <Link class="p-4" to="/ApproveCards">
-          Approve Cards
-          </Link>{" "}
-        </span>
-      </button>
-      <button class=" bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
-        <span class="dark:text-amber-500 dark:bg-black  block hover: text-red-900 p-2 rounded-full bg-white">
-          {" "}
-          <Link class="p-4" to="/SubmitCards">
-          Submit Cards
-          </Link>{" "}
-        </span>
-      </button></div>
-      </>
-    );
-  }
+  const handleChange = (event) => {
+    setUserInput({ ...userInput, [event.target.name]: event.target.value });
+  };
+
+ const [responseData, setResponseData] = useState();
+  const navigate = useNavigate();
+  const handleSubmit = async (event, req, res) => {
+    event.preventDefault();
+    try {
+      const check = await fetch("http://localhost:5000/AdminSignIn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: userInput.username,
+          password: userInput.password,
+        }),
+      });
+      console.log(check);
+      //Add response from server
+
+      const data = await check.json();
+      setResponseData(data);
+
+      if (data == "Valid!") {
+        navigate("/ApproveOrSubmit");
+      }
+    } catch (error) {
+      //if else statement to add redirect API to creator submission page
+      console.error(error);
+    }
+  };
+  //Frontend API
+  return (
+    <>
+      <section class="flex bg-white dark:bg-black text-red-900 dark:text-amber-500 justify-center m-auto flex-wrap md:text-xl md:align-middle text-center">
+        <form
+          onSubmit={handleSubmit}
+          class="flex flex-col md:flex-row md:gap-4 md:"
+        >
+          <div>
+            <h1 class=" m-auto md:mt-8 md:mr-4 mt-4 mb-4  text-xl flex justify-center  font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white w-full bg-white dark:bg-black dark:text-white md:p-4">
+              Sign In
+            </h1>
+          </div>
+          <div>
+            <label class="  m-auto mt-2 mb-2 flex justify-center  font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white w-full bg-white dark:bg-black dark:text-white md:p-4">
+              Email
+            </label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username Here..."
+              value={userInput.username}
+              onChange={handleChange}
+              class="bg-white  m-auto mt-2 mb-4 dark:border-amber-500 border-2 border-red-800 w-full flex p-2 justify-center align-middle dark:bg-black text-red-900 dark:text-white rounded-full text-center"
+              required
+            ></input>
+          </div>
+          <div>
+            <label class=" m-auto mt-2 mb-2 flex justify-center  font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white  w-full bg-white dark:bg-black dark:text-white md:p-4">
+              Password
+            </label>
+            <input
+              type="text"
+              name="password"
+              placeholder="Password Here..."
+              value={userInput.password}
+              onChange={handleChange}
+              class="bg-white  m-auto mt-2 mb-4   dark:border-amber-500 border-2 border-red-800 w-full flex p-2 justify-center align-middle dark:bg-black text-red-900 dark:text-white rounded-full text-center"
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              type="submit"
+              class="dark:text-white md:mt-8 md:ml-4 mb-4 font-zen bg-gradient-to-tr from-amber-500 to-amber-500 via-red-800 hover:bg-gradient-to-tl hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+            ></input>
+          </div>{" "}
+          <div>Response: {responseData}</div>
+        </form>
+      </section>
+    </>
+  );
+}

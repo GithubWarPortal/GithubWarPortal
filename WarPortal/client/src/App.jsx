@@ -9,7 +9,7 @@ import { ContactUs } from "./components/ContactUs.jsx";
 import Admin from "./components/Admin/Admin.jsx";
 import ApproveCards from "./components/Admin/approveCards.jsx";
 import SubmitCards from "./components/Admin/submitCards.jsx";
-
+import ApproveOrSubmit from "./components/Admin/approveOrSubmit.jsx";
 
 import SignIn from "./components/SignIn/SignIn.jsx";
 import Create from "./components/Create/Create.jsx";
@@ -37,9 +37,13 @@ function App() {
           <Route path="/Shop" element={<Shop />} />
           <Route path="/Validator" element={<CardValidator />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+
+          
           <Route path="/Admin" element={<Admin />} />
+         <Route path="/ApproveOrSubmit" element={<ApproveOrSubmit/>}/>
           <Route path="/ApproveCards" element={<ApproveCards />} />
           <Route path="/SubmitCards" element={<SubmitCards />} />
+         
           <Route path="/Create" element={<Create />} />
           <Route path="/StoreOwner" element={<StoreOwner />} />
           <Route path="/Creator" element={<Creator />} />

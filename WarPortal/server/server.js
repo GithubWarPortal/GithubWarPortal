@@ -7,7 +7,8 @@ import storeSubmissionRouter from "./routes/CardCreator/storeSubmission.js";
 import creatorSubmissionRouter from "./routes/CardCreator/creatorSubmission.js";
 import creatorSignInRouter from "./routes/SignIn/creator.js";
 import storeSignInRouter from "./routes/SignIn/store.js";
-import adminSignInRouter from "./routes/admin.js"
+import adminSignInRouter from "./routes/Admin/admin.js"
+import getSubmissionsRouter from "./routes/Admin/getSubmissions.js"
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
 import creatorWebhookRouter from "./routes/Stripe/creatorWebhook.js";
@@ -28,6 +29,7 @@ app.use("/CardValidator", cardValidatorRouter);
 //Router for card submissions
 app.use("/StoreSubmission", storeSubmissionRouter);
 app.use("/CreatorSubmission", creatorSubmissionRouter);
+app.use("/submissions", getSubmissionsRouter)
 
 //Sign in
 app.use("/CreatorSignIn", creatorSignInRouter);

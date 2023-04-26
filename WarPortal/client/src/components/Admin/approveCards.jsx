@@ -2,46 +2,48 @@ import { useState, useEffect } from "react";
 
 export default function ApproveCards() {
   const [submissions, setSubmissions] = useState([]);
+
   async function getSubmissions() {
-    const { data }  = await fetch("http://localhost:5000/submissions");
-    console.log(data);
-    
+    const response = await fetch("http://localhost:5000/submissions");
+    const data = await response.json();
     setSubmissions(data);
   }
+  
   useEffect(() => {
-    getSubmissions();}, [submissions]
-  );
-
+    getSubmissions();
+  }, []);
+  
   return (
     <>
       <div>
-        <div class="m-auto mt-4 w-1/3 flex justify-center bg-gradient-to-r  from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
-          <h1 class="font-zen text-2xl  dark:bg-black   w-full hover: text-red-900 p-2 rounded-full bg-white text-center justify-center">
+        <div className="m-auto mt-4 w-1/3 flex justify-center bg-gradient-to-r from-yellow-500 via-red-800 p-2 to-yellow-500 rounded-full">
+          <h1 className="font-zen text-2xl dark:bg-black w-full hover:text-red-900 p-2 rounded-full bg-white text-center justify-center">
             Approve Cards
           </h1>
         </div>
         <div>
-        {submissions?.map((data) => (
-        
-            <div key={data.id}>
-              <p>{data.Role}</p>
-              <p>{data.cardName}</p>
-              <p>{data.moveOne}</p>
-              <p>{data.moveOneDescription}</p>
-              <p>{data.moveTwo}</p>
-              <p>{data.moveTwoDescription}</p>
-              <p>{data.moveThree}</p>
-              <p>{data.moveThreeDescription}</p>
-              <p>{data.moveFour}</p>
-              <p>{data.moveFourDescription}</p>
-              <p>{data.gmail}</p>
-              <p>{data.approved}</p>
-              <p>{data.submissionDate}</p>
-            
-            </div>
-          ))}
+          {submissions.map((data) => {
+            return (
+              <div key={data.id}>
+                <div>Role: {data.Role}</div>
+                <div>Card: {data.cardName}</div>
+                <div>One: {data.moveOne}</div>
+                <div>Desc: {data.moveOneDescription}</div>
+                <div>Two: {data.moveTwo}</div>
+                <div>Desc: {data.moveTwoDescription}</div>
+                <div>Three: {data.moveThree}</div>
+                <div>Desc: {data.moveThreeDescription}</div>
+                <div>Four: {data.moveFour}</div>
+                <div>Desc: {data.moveFourDescription}</div>
+                <div>{data.gmail}</div>
+                <div>{data.approved}</div>
+                <div>{data.submissionDate}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
   );
+  
 }

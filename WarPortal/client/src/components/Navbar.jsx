@@ -109,7 +109,7 @@ useEffect(() => {
               class="text-sm w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
             >
               <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                Dark
+                Dark Mode
               </span>
             </button>
           </li> </ul>

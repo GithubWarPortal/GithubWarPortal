@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 export default function ApproveCards() {
   const [submissions, setSubmissions] = useState([]);
 
@@ -8,11 +7,29 @@ export default function ApproveCards() {
     const data = await response.json();
     setSubmissions(data);
   }
-  
+
   useEffect(() => {
     getSubmissions();
   }, []);
-  
+
+  async function approve(id) {
+    await fetch("http://localhost:5000/approve", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    });
+    
+    const submission = submissions.find((submission) => submission.id === id);
+    submission.approved = true;
+
+    setSubmissions([...submissions]);
+    getSubmissions();
+  }
+
   return (
     <>
       <div>
@@ -21,11 +38,12 @@ export default function ApproveCards() {
             Approve Cards
           </h1>
         </div>
+
         <div>
           {submissions.map((data) => {
             return (
               <div key={data.id}>
-                <div>Role: {data.Role}</div>
+                <div>{data.id}</div>
                 <div>Card: {data.cardName}</div>
                 <div>One: {data.moveOne}</div>
                 <div>Desc: {data.moveOneDescription}</div>
@@ -36,7 +54,9 @@ export default function ApproveCards() {
                 <div>Four: {data.moveFour}</div>
                 <div>Desc: {data.moveFourDescription}</div>
                 <div>{data.gmail}</div>
-                <div>{data.approved}</div>
+                <button onClick={() => approve(data.id)}>
+                  {data.approved.toString()}
+                </button>
                 <div>{data.submissionDate}</div>
               </div>
             );
@@ -45,5 +65,4 @@ export default function ApproveCards() {
       </div>
     </>
   );
-  
 }

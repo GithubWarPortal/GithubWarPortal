@@ -130,7 +130,7 @@ model Admin {
 }
 
 model Approval {
-  submissionId           String      @unique @default(uuid())
+  id           String      @unique @default(uuid())
   Role                   Role        @default(CREATOR)
   cardName               String
   moveOne                String
@@ -149,7 +149,7 @@ model Approval {
   Creator                Creator?    @relation(fields: [CreatorId], references: [creatorId])
   CreatorId       String?
 
-  @@index([submissionId])
+  @@index([id])
   @@index([StoreOwnerId])
   @@index([CreatorId])
 }

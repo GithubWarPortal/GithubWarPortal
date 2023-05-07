@@ -1,7 +1,10 @@
 import Navbar from "./components/Navbar";
 import "./index.css";
 import { Home } from "./components/Home.jsx";
-import { Shop } from "./components/Shop.jsx";
+import Shop from "./components/Shop/Shop.jsx";
+import Decks from "./components/Shop/decks.jsx";
+import Cards from "./components/Shop/cards.jsx";
+
 import { StoryArcs } from "./components/Story.jsx";
 import { ContactUs } from "./components/ContactUs.jsx";
 
@@ -34,7 +37,12 @@ function App() {
           <Route path="/Create" element={<Create />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/StoryArcs" element={<StoryArcs />} />
+
           <Route path="/Shop" element={<Shop />} />
+          <Route path="/Decks" element={<Decks />} />
+<Route path="/Cards" element={<Cards />} />
+
+
           <Route path="/Validator" element={<CardValidator />} />
           <Route path="/ContactUs" element={<ContactUs />} />
 

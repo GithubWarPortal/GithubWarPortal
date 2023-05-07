@@ -56,7 +56,7 @@ export default function Admin() {
           </div>
           <div>
             <label class="  m-auto mt-2 mb-2 flex justify-center  font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white w-full bg-white dark:bg-black dark:text-white md:p-4">
-              Email
+              Username
             </label>
             <input
               type="text"

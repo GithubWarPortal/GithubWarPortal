@@ -9,6 +9,7 @@ import creatorSignInRouter from "./routes/SignIn/creator.js";
 import storeSignInRouter from "./routes/SignIn/store.js";
 import adminSignInRouter from "./routes/Admin/admin.js";
 import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
+import getApprovedRouter from "./routes/Admin/getApproved.js"
 import getSubmissionsRouter from "./routes/Admin/getSubmissions.js"
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
@@ -37,6 +38,7 @@ app.use("/CreatorSignIn", creatorSignInRouter);
 app.use("/StoreSignIn", storeSignInRouter);
 app.use("/AdminSignIn", adminSignInRouter);
 app.use("/approve", approveSubmissionRouter)
+app.use("/GetApproved", getApprovedRouter)
 //Router for creator subscriptions
 app.use("/create-creator-checkout-session", creatorCheckoutRouter);
 app.use("/create-creator-portal-session", creatorPortalRouter);

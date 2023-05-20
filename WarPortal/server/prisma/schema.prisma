@@ -148,6 +148,7 @@ model Approval {
   StoreOwnerId String?
   Creator                Creator?    @relation(fields: [CreatorId], references: [creatorId])
   CreatorId       String?
+  created Boolean @default(false)
 
   @@index([id])
   @@index([StoreOwnerId])

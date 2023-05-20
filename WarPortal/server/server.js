@@ -1,16 +1,25 @@
 import express from "express";
 import cors from "cors";
 
-//Import routes
+//Card Validator
 import cardValidatorRouter from "./routes/cardValidator.js";
+
+//Submission Router
 import storeSubmissionRouter from "./routes/CardCreator/storeSubmission.js";
 import creatorSubmissionRouter from "./routes/CardCreator/creatorSubmission.js";
+
+//Sign In Router
 import creatorSignInRouter from "./routes/SignIn/creator.js";
 import storeSignInRouter from "./routes/SignIn/store.js";
+
+//Admin routes
 import adminSignInRouter from "./routes/Admin/admin.js";
 import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
 import getApprovedRouter from "./routes/Admin/getApproved.js"
 import getSubmissionsRouter from "./routes/Admin/getSubmissions.js"
+import removeCardRouter from "./routes/Admin/removeCard.js";
+
+//Checkout Routers
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
 import creatorWebhookRouter from "./routes/Stripe/creatorWebhook.js";
@@ -36,9 +45,12 @@ app.use("/submissions", getSubmissionsRouter)
 //Sign in
 app.use("/CreatorSignIn", creatorSignInRouter);
 app.use("/StoreSignIn", storeSignInRouter);
+
+//Admin
 app.use("/AdminSignIn", adminSignInRouter);
-app.use("/approve", approveSubmissionRouter)
-app.use("/GetApproved", getApprovedRouter)
+app.use("/approve", approveSubmissionRouter);
+app.use("/GetApproved", getApprovedRouter);
+app.use("/RemoveCard", removeCardRouter);
 //Router for creator subscriptions
 app.use("/create-creator-checkout-session", creatorCheckoutRouter);
 app.use("/create-creator-portal-session", creatorPortalRouter);
@@ -50,7 +62,7 @@ app.use("/webhook-creator", creatorWebhookRouter);
 //app.use("/webhook-creator", stripeStoreRouter);
 
 //Routes for sign up
-app.use("/CreateCreator", createCreatorRouter)
-app.use("/CreateStore", createStoreRouter)
+app.use("/CreateCreator", createCreatorRouter);
+app.use("/CreateStore", createStoreRouter);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

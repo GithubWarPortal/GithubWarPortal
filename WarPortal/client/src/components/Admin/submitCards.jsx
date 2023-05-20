@@ -41,6 +41,21 @@ export default function SubmitCards() {
       console.log(data);
     }
   }
+ 
+  async function removeCard(id) {
+    await fetch("http://localhost:5000/RemoveCard", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+      
+    });
+    getApproved();
+
+  }
 
   return (
     <>
@@ -139,7 +154,8 @@ export default function SubmitCards() {
                   <div>{data.submissionDate.slice(0, 10)}</div>
                 </div>
                 <button
-                  onClick={createCard}
+                  onClick={//createCard &&
+                    () => removeCard(data.id)}
                   class="w-1/3 p-2 mt-4 m-auto  text-white rounded-full bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500"
                 >
                   Create New Card

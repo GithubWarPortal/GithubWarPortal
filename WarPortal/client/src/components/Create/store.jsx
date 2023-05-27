@@ -59,8 +59,8 @@ export default function StoreOwner() {
   const [openPicker, authResponse] = useDrivePicker();
   // const customViewsArray = [new google.picker.DocsView()]; // custom view
   const handleOpenPicker = () => {
-    //  VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
-    // VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY;
+VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+ VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY;
     openPicker({
       clientId: "VITE_CLIENT_ID",
       developerKey: "VITE_DEVELOPER_KEY",

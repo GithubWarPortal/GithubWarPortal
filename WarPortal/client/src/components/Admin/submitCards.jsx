@@ -14,7 +14,7 @@ export default function SubmitCards() {
   }, []);
 
   async function createCard() {
-    const apiKey = process.env.REACT_APP_GAMECRAFTER_API_KEY;
+    const apiKey = import.meta.env.VITE_GAMECRAFTER_API_KEY;
 
     for (let i = 0; i < approved.length; i++) {
       const move = approved[i];

@@ -3,7 +3,7 @@ import useDrivePicker from "react-google-drive-picker";
 
 export default function Creator() {
   const [open, setOpen] = useState(false);
-
+  const [selectedFiles, setSelectedFiles] = useState([]);
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -58,14 +58,14 @@ export default function Creator() {
 
   const [openPicker, authResponse] = useDrivePicker();
   // const customViewsArray = [new google.picker.DocsView()]; // custom view
-  const handleOpenPicker = () => {
- VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
-VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY;
+  const handleOpenPicker = async () => {
+    const VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+    const VITE_KEY = import.meta.env.VITE_KEY;
+
     openPicker({
-      clientId: "VITE_CLIENT_ID",
-      developerKey: "VITE_DEVELOPER_KEY",
+      clientId: VITE_CLIENT_ID,
+      developerKey: VITE_KEY,
       viewId: "DOCS",
-      //TODO: token: token, // pass oauth token in case you already have one
       showUploadView: true,
       showUploadFolders: true,
       supportDrives: true,
@@ -74,12 +74,23 @@ VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY;
       callbackFunction: (data) => {
         if (data.action === "cancel") {
           console.log("User clicked cancel/close button");
+        } else if (data.action === "picked") {
+          setSelectedFiles((prevSelectedFiles) => [
+            ...prevSelectedFiles,
+            ...data.docs,
+          ]);
         }
-        console.log(data);
       },
     });
   };
-
+  const handleDelete = () => {
+    setSelectedFiles((prevSelectedFiles) => {
+      const updatedFiles = prevSelectedFiles.filter(
+        (data) => data.id !== data.id
+      );
+      return updatedFiles;
+    });
+  };
   //Add frontend API's here
   return (
     <>
@@ -112,6 +123,12 @@ VITE_DEVELOPER_KEY = import.meta.env.VITE_DEVELOPER_KEY;
               Select Files
             </button>
           </div>
+          {selectedFiles.map((data) => (
+            <div key={data.id}>
+              <p>File Name: {data.name}</p>
+              <button onClick={(data) => handleDelete(data.id)}>-</button>
+            </div>
+          ))}
           <section>
             <form onSubmit={handleSubmit} class="flex flex-col gap-4 mt-4">
               <section class="flex flex-col justify-center">

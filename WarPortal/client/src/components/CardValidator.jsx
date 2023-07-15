@@ -36,7 +36,7 @@ export default function CardValidator() {
   };
   return (
     <>
-      <div class="dark:bg-black dark:text-white lg:flex-wrap lg:justify-center lg:align-middle   flex items-center justify-center text-center text-lg text-red-800">
+      <div class="bg-[url('/images/cards.jpg')] bg-cover text-white lg:flex-wrap lg:justify-center lg:align-middle   flex items-center justify-center text-center text-lg ">
         <form onSubmit={handleSubmit} class="">
         <header class="  flex justify-center">
             {" "}
@@ -93,7 +93,7 @@ export default function CardValidator() {
               ></input>
             </label>
             <label for="Result">
-              <h3 class="lg:text-3xl text-red-800">Card is:</h3>
+              <h3 class="lg:text-3xl text-white m-auto bg-amber-700 rounded-full w-1/6">Card is:</h3>
             </label>
             <div class="flex justify-center">
               {" "}

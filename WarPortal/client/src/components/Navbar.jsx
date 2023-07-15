@@ -22,8 +22,12 @@ useEffect(() => {
 
 
   return (
-    <div class="text-lg  dark:bg-black lg:p-6  h-1/6 font-zen">
-      <nav>
+    <div class="text-lg flex flex-col dark:bg-black lg:p-6  h-1/6 font-zen">
+      <header class="flex flex-col flex-wrap">
+      <img class="w-1/3 l-1/3 m-auto mt-3 mb-6  border-double border-2  border-amber-700" src="/images/header.jpg"/>
+      </header>
+     
+      <nav class="flex flex-wrap ">
         <ul class="flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
           <li>
             <button class=" w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">

@@ -5,121 +5,121 @@ export default function Creator() {
   const [open, setOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [userInput, setUserInput] = useState({
-  cardName: "",
-  moveOne: "",
-  moveOneDescription: "",
-  moveTwo: "",
-  moveTwoDescription: "",
-  moveThree: "",
-  moveThreeDescription: "",
-  moveFour: "",
-  moveFourDescription: "",
-  gmail: "",
-  creatorId: "",
+    cardName: "",
+    moveOne: "",
+    moveOneDescription: "",
+    moveTwo: "",
+    moveTwoDescription: "",
+    moveThree: "",
+    moveThreeDescription: "",
+    moveFour: "",
+    moveFourDescription: "",
+    gmail: "",
+    creatorId: "",
   });
-  
+
   const handleOpen = () => {
-  setOpen(!open);
+    setOpen(!open);
   };
-  
+
   const handleChange = (event) => {
-  setUserInput((prevUserInput) => ({
-  ...prevUserInput,
-  [event.target.name]: event.target.value,
-  }));
+    setUserInput((prevUserInput) => ({
+      ...prevUserInput,
+      [event.target.name]: event.target.value,
+    }));
   };
-  
+
   const handleSubmit = async (event) => {
-  event.preventDefault();
-  try {
-  const submit = fetch("http://localhost:5000/CreatorSubmission", {
-  method: "POST",
-  headers: {
-  "Content-Type": "application/json",
-  },
-  body: JSON.stringify(userInput),
-  });
-  console.log(submit);
-  
-    const auth = await authResponse();
-    const drive = google.drive({ version: "v3", auth });
-    for (const file of selectedFiles) {
-      const media = {
-        mimeType: file.type,
-        body: file,
-      };
-      const res = await drive.files.create({
-        requestBody: {
-          name: file.name,
-          parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
+    event.preventDefault();
+    try {
+      const submit = fetch("http://localhost:5000/CreatorSubmission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        media,
+        body: JSON.stringify(userInput),
       });
-      console.log("File uploaded:", res.data.name);
+      console.log(submit);
+
+      const auth = await authResponse();
+      const drive = google.drive({ version: "v3", auth });
+      for (const file of selectedFiles) {
+        const media = {
+          mimeType: file.type,
+          body: file,
+        };
+        const res = await drive.files.create({
+          requestBody: {
+            name: file.name,
+            parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
+          },
+          media,
+        });
+        console.log("File uploaded:", res.data.name);
+      }
+      alert("Thank you for your submission!");
+    } catch (error) {
+      console.error(error);
     }
-    alert("Thank you for your submission!");
-  } catch (error) {
-    console.error(error);
-  }
   };
-  
+
   const [openPicker, authResponse] = useDrivePicker();
   const handleOpenPicker = async () => {
-  const VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
-  const VITE_KEY = import.meta.env.VITE_KEY;
-  
-  openPicker({
-    clientId: VITE_CLIENT_ID,
-    developerKey: VITE_KEY,
-    viewId: "DOCS",
-    showUploadView: true,
-    showUploadFolders: true,
-    supportDrives: true,
-    multiselect: true,
-    callbackFunction: (data) => {
-      if (data.action === "cancel") {
-        console.log("User clicked cancel/close button");
-      } else if (data.action === "picked") {
-        setSelectedFiles((prevSelectedFiles) => [
-          ...prevSelectedFiles,
-          ...data.docs,
-        ]);
-      }
-    },
-  });
+    const VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+    const VITE_KEY = import.meta.env.VITE_KEY;
+
+    openPicker({
+      clientId: VITE_CLIENT_ID,
+      developerKey: VITE_KEY,
+      viewId: "DOCS",
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: true,
+      callbackFunction: (data) => {
+        if (data.action === "cancel") {
+          console.log("User clicked cancel/close button");
+        } else if (data.action === "picked") {
+          setSelectedFiles((prevSelectedFiles) => [
+            ...prevSelectedFiles,
+            ...data.docs,
+          ]);
+        }
+      },
+    });
   };
-  
+
   const handleDelete = (id) => {
-  setSelectedFiles((prevSelectedFiles) =>
-  prevSelectedFiles.filter((data) => data.id !== id)
-  );
+    setSelectedFiles((prevSelectedFiles) =>
+      prevSelectedFiles.filter((data) => data.id !== id)
+    );
   };
-  
+
   const handleUpload = async () => {
-  try {
-  const authResponse = await authenticate();
-  const drive = google.drive({ version: "v3", auth: authResponse });
-  
-  
-    for (const file of selectedFiles) {
-      const media = {
-        mimeType: file.type,
-        body: file,
-      };
-      //const YOUR_FOLDER_ID = import.meta.env.VITE_YOUR_FOLDER_ID;
-      const res = await drive.files.create({
-        requestBody: {
-          name: file.name,
-          parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
-        },
-        media,
-      });
-  
-      console.log("File uploaded:", res.data.name);
+    try {
+      const authResponse = await authenticate();
+      const drive = google.drive({ version: "v3", auth: authResponse });
+
+      for (const file of selectedFiles) {
+        const media = {
+          mimeType: file.type,
+          body: file,
+        };
+        //const YOUR_FOLDER_ID = import.meta.env.VITE_YOUR_FOLDER_ID;
+        const res = await drive.files.create({
+          requestBody: {
+            name: file.name,
+            parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
+          },
+          media,
+        });
+
+        console.log("File uploaded:", res.data.name);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
-  }}
+  };
   //Add frontend API's here
   return (
     <>
@@ -381,7 +381,8 @@ export default function Creator() {
               <input
                 type="submit"
                 value="Submit for Approval!"
-                class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500" onSubmit={handleUpload}
+                class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+                onSubmit={handleUpload}
               ></input>
             </form>
           </section>

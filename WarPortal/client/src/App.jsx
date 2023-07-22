@@ -8,7 +8,6 @@ import Cards from "./components/Shop/cards.jsx";
 import { StoryArcs } from "./components/Story.jsx";
 import { ContactUs } from "./components/ContactUs.jsx";
 
-
 import Admin from "./components/Admin/Admin.jsx";
 import ApproveCards from "./components/Admin/approveCards.jsx";
 import SubmitCards from "./components/Admin/submitCards.jsx";
@@ -37,22 +36,15 @@ function App() {
           <Route path="/Create" element={<Create />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/StoryArcs" element={<StoryArcs />} />
-
           <Route path="/Shop" element={<Shop />} />
           <Route path="/Decks" element={<Decks />} />
-<Route path="/Cards" element={<Cards />} />
-
-
+          <Route path="/Cards" element={<Cards />} />
           <Route path="/Validator" element={<CardValidator />} />
           <Route path="/ContactUs" element={<ContactUs />} />
-
-          
           <Route path="/Admin" element={<Admin />} />
-         <Route path="/ApproveOrSubmit" element={<ApproveOrSubmit/>}/>
+          <Route path="/ApproveOrSubmit" element={<ApproveOrSubmit />} />
           <Route path="/ApproveCards" element={<ApproveCards />} />
           <Route path="/SubmitCards" element={<SubmitCards />} />
-
-         
           <Route path="/Create" element={<Create />} />
           <Route path="/StoreOwner" element={<StoreOwner />} />
           <Route path="/Creator" element={<Creator />} />
@@ -62,7 +54,6 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/CreatorSignUp" element={<CreatorSignUp />} />
           <Route path="/StoreOwnerSignUp" element={<StoreOwnerSignUp />} />
-     
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -16,7 +16,6 @@ export default function CreatorSignUp() {
         lastName: userInput.lastName,
         email: userInput.email,
         password: userInput.password,
-      
       }),
     });
     console.log(creator);
@@ -29,13 +28,12 @@ export default function CreatorSignUp() {
   return (
     <>
       <section class="bg-white dark:bg-black">
-     
-      <label
-            htmlFor="Creator"
-            class="flex m-auto mt-4 justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4  text-white bg-white dark:bg-black "
-          >
-            Creator
-          </label>
+        <label
+          htmlFor="Creator"
+          class="flex m-auto mt-4 justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4  text-white bg-white dark:bg-black "
+        >
+          Creator
+        </label>
         <form
           onSubmit={handleSubmit}
           class="flex justify-center m-auto  flex-col"

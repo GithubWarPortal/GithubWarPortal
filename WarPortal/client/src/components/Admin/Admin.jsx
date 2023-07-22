@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Admin() {
-    const [userInput, setUserInput] = useState({
+  const [userInput, setUserInput] = useState({
     username: "",
     password: "",
   });
@@ -12,7 +12,7 @@ export default function Admin() {
     setUserInput({ ...userInput, [event.target.name]: event.target.value });
   };
 
- const [responseData, setResponseData] = useState();
+  const [responseData, setResponseData] = useState();
   const navigate = useNavigate();
   const handleSubmit = async (event, req, res) => {
     event.preventDefault();

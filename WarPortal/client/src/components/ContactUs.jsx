@@ -1,11 +1,11 @@
 export function ContactUs() {
   return (
     <>
-      <div class="bg-white dark:bg-black text-center m-auto  justify-center flex flex-col lg:m-auto align-middle">
-        <h1 class="lg:p-4 lg:m-auto lg:text-3xl lg:w-1/4  font-zen  rounded-full  bg-white bg-gradient-to-tr m-auto from-yellow-500  via-red-800 to-yellow-500 p-2  text-white mt-3  ">
+      <div class="bg-[url('/images/landscape.jpg')] p-10 bg-no-repeat bg-cover w-full m-auto dark:bg-black text-center  justify-center flex flex-col lg:m-auto align-middle">
+        <h1 class="lg:p-4 lg:m-auto lg:text-3xl lg:w-1/4  font-zen  rounded-full bg-no-repeat bg-white bg-gradient-to-tr m-auto from-yellow-500  via-red-800 to-yellow-500 p-2  text-white mt-3  ">
           Contact Us!
         </h1>
-        <h2 class="text-red-900 mt-3 lg:m-6 dark:text-red-300">
+        <h2 class="text-white bg-fuchsia-800 m-auto p-4 bg-opacity-30 mt-10 mb-10 w-1/4 bg-center text-center   rounded-lg">
           {" "}
           We'd love to hear from you.
         </h2>

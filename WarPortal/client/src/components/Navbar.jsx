@@ -11,19 +11,24 @@ export default function Navbar() {
       setTheme("light");
     }
   };
-useEffect(() => {
+  useEffect(() => {
     document.body.className = theme;
   }, [theme]);
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
   };
- 
-
 
   return (
-    <div class="text-lg  dark:bg-black lg:p-6  h-1/6 font-zen">
-      <nav>
+    <div class="text-lg flex flex-col dark:bg-black lg:p-6  h-1/6 font-zen">
+      <header class="flex flex-col flex-wrap">
+        <img
+          class="w-1/3 l-1/3 m-auto mt-3 mb-6  border-double border-2  border-amber-700"
+          src="/images/header.jpg"
+        />
+      </header>
+
+      <nav class="flex flex-wrap ">
         <ul class="flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
           <li>
             <button class=" w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
@@ -65,45 +70,37 @@ useEffect(() => {
               </span>
             </button>
           </li>
-
-
-         
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/Validator">
-                          Validator
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/ContactUs">
-                          Contact
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
-                      <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
-                        {" "}
-                        <Link class="" to="/Admin">
-                          Admin
-                        </Link>{" "}
-                      </span>
-                    </button>
-                  </li>
-
-
-             
-           
-         
-        <li>
+          <li>
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                {" "}
+                <Link class="" to="/Validator">
+                  Validator
+                </Link>{" "}
+              </span>
+            </button>
+          </li>
+          <li>
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                {" "}
+                <Link class="" to="/ContactUs">
+                  Contact
+                </Link>{" "}
+              </span>
+            </button>
+          </li>
+          <li>
+            <button class="w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
+              <span class="dark:text-amber-500 dark:bg-black w-1/7 block hover: text-red-900 p-2 rounded-full bg-white">
+                {" "}
+                <Link class="" to="/Admin">
+                  Admin
+                </Link>{" "}
+              </span>
+            </button>
+          </li>
+          <li>
             <button
               onClick={toggleTheme}
               class="text-sm w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center"
@@ -112,8 +109,9 @@ useEffect(() => {
                 Dark Mode
               </span>
             </button>
-          </li> </ul>
-      </nav>         
+          </li>{" "}
+        </ul>
+      </nav>
     </div>
   );
 }

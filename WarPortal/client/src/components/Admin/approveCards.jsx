@@ -33,7 +33,7 @@ export default function ApproveCards() {
   return (
     <>
       <div>
-      <div class="m-auto   mt-4 max-w-sm flex justify-center bg-gradient-to-r  from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
+        <div class="m-auto   mt-4 max-w-sm flex justify-center bg-gradient-to-r  from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full ">
           <h1 class="m-auto font-zen text-2xl dark:text-amber-400 dark:bg-black   w-full hover: text-red-900 p-2 rounded-full bg-white text-center justify-center">
             Approve Cards
           </h1>
@@ -45,7 +45,7 @@ export default function ApproveCards() {
                 key={data.id}
                 class="font-sans flex flex-col justify-center text-center text-lg"
               >
-                 <div class="w-full h-1 mt-2  bg-red-800 text-red-800">. </div>
+                <div class="w-full h-1 mt-2  bg-red-800 text-red-800">. </div>
                 <div>
                   <h2 class="p-1 w-1/6 mt-4 m-auto justify-center text-white bg-gradient-to-tl rounded-full from-amber-500 to-amber-500 via-red-800 border-2">
                     ID

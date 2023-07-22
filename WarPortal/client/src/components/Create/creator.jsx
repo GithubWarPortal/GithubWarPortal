@@ -4,10 +4,6 @@ import useDrivePicker from "react-google-drive-picker";
 export default function Creator() {
   const [open, setOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
   const [userInput, setUserInput] = useState({
     cardName: "",
     moveOne: "",
@@ -21,13 +17,19 @@ export default function Creator() {
     gmail: "",
     creatorId: "",
   });
-  console.log(userInput);
-  const handleChange = (event) => {
-    setUserInput({ ...userInput, [event.target.name]: event.target.value });
-  };
-  console.log(userInput);
 
-  const handleSubmit = async (event, req, res) => {
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const handleChange = (event) => {
+    setUserInput((prevUserInput) => ({
+      ...prevUserInput,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const submit = fetch("http://localhost:5000/CreatorSubmission", {
@@ -35,21 +37,26 @@ export default function Creator() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          cardName: userInput.cardName,
-          moveOne: userInput.moveOne,
-          moveOneDescription: userInput.moveOneDescription,
-          moveTwo: userInput.moveTwo,
-          moveTwoDescription: userInput.moveTwoDescription,
-          moveThree: userInput.moveThree,
-          moveThreeDescription: userInput.moveThreeDescription,
-          moveFour: userInput.moveFour,
-          moveFourDescription: userInput.moveFourDescription,
-          gmail: userInput.gmail,
-          creatorId: userInput.creatorId,
-        }),
+        body: JSON.stringify(userInput),
       });
       console.log(submit);
+
+      const auth = await authResponse();
+      const drive = google.drive({ version: "v3", auth });
+      for (const file of selectedFiles) {
+        const media = {
+          mimeType: file.type,
+          body: file,
+        };
+        const res = await drive.files.create({
+          requestBody: {
+            name: file.name,
+            parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
+          },
+          media,
+        });
+        console.log("File uploaded:", res.data.name);
+      }
       alert("Thank you for your submission!");
     } catch (error) {
       console.error(error);
@@ -57,7 +64,6 @@ export default function Creator() {
   };
 
   const [openPicker, authResponse] = useDrivePicker();
-  // const customViewsArray = [new google.picker.DocsView()]; // custom view
   const handleOpenPicker = async () => {
     const VITE_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
     const VITE_KEY = import.meta.env.VITE_KEY;
@@ -70,7 +76,6 @@ export default function Creator() {
       showUploadFolders: true,
       supportDrives: true,
       multiselect: true,
-      // customViews: customViewsArray, // custom view
       callbackFunction: (data) => {
         if (data.action === "cancel") {
           console.log("User clicked cancel/close button");
@@ -83,13 +88,37 @@ export default function Creator() {
       },
     });
   };
-  const handleDelete = () => {
-    setSelectedFiles((prevSelectedFiles) => {
-      const updatedFiles = prevSelectedFiles.filter(
-        (data) => data.id !== data.id
-      );
-      return updatedFiles;
-    });
+
+  const handleDelete = (id) => {
+    setSelectedFiles((prevSelectedFiles) =>
+      prevSelectedFiles.filter((data) => data.id !== id)
+    );
+  };
+
+  const handleUpload = async () => {
+    try {
+      const authResponse = await authenticate();
+      const drive = google.drive({ version: "v3", auth: authResponse });
+
+      for (const file of selectedFiles) {
+        const media = {
+          mimeType: file.type,
+          body: file,
+        };
+        //const YOUR_FOLDER_ID = import.meta.env.VITE_YOUR_FOLDER_ID;
+        const res = await drive.files.create({
+          requestBody: {
+            name: file.name,
+            parents: ["YOUR_FOLDER_ID"], // Replace with the ID of the folder where you want to upload the files
+          },
+          media,
+        });
+
+        console.log("File uploaded:", res.data.name);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   //Add frontend API's here
   return (
@@ -126,7 +155,7 @@ export default function Creator() {
           {selectedFiles.map((data) => (
             <div key={data.id}>
               <p>File Name: {data.name}</p>
-              <button onClick={(data) => handleDelete(data.id)}>-</button>
+              <button onClick={() => handleDelete(data.id)}>-</button>
             </div>
           ))}
           <section>
@@ -353,6 +382,7 @@ export default function Creator() {
                 type="submit"
                 value="Submit for Approval!"
                 class="font-zen bg-gradient-to-tl from-amber-500 to-amber-500 via-red-800 hover:from-red-800 hover:to-red-800 hover:via-amber-500 rounded-full text-white p-4 mt-2 focus:from-red-800 focus:to-red-800 focus:via-amber-500"
+                onSubmit={handleUpload}
               ></input>
             </form>
           </section>

@@ -23,7 +23,7 @@ export default function Navbar() {
     <div class="text-lg flex flex-col dark:bg-black lg:p-6  h-1/6 font-zen">
       <header class="flex flex-col flex-wrap">
         <img
-          class="w-1/3 l-1/3 m-auto mt-3 mb-6  border-double border-2  border-amber-700"
+          class="md:w-1/5 md:l-1/5 w-full l-2/3 m-auto  mb-4  border-double border-2  border-amber-700"
           src="/images/header.jpg"
         />
       </header>

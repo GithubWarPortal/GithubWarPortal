@@ -125,7 +125,7 @@ export default function Creator() {
     <>
       <div class=" bg-white dark:bg-black text-center flex-col flex justify-center">
         <div class="m-4">
-          <header class="lg:p-4 m-auto lg:text-3xl lg:w-1/2 max-w-md flex justify-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3">
+          <header class="lg:p-4 m-auto lg:text-3xl lg:w-1/2 max-w-sm flex justify-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3">
             <h2>Create Your Own Card!</h2>
           </header>
           <button
@@ -162,7 +162,7 @@ export default function Creator() {
             <form onSubmit={handleSubmit} class="flex flex-col gap-4 mt-4">
               <section class="flex flex-col justify-center">
                 <label htmlFor="Character Name">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Character Name
                   </h2>
                 </label>
@@ -187,7 +187,7 @@ export default function Creator() {
                 </div>
 
                 <label htmlFor="Move Name 1">
-                  <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  <h2 class="flex m-auto justify-center max-w-sm text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                     Move Name 1
                   </h2>
                 </label>
@@ -203,7 +203,7 @@ export default function Creator() {
                   ></input>
                 </div>
                 <label htmlFor="Move 1 Description">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Move 1 Description
                   </h2>
                 </label>
@@ -228,7 +228,7 @@ export default function Creator() {
                 </div>
 
                 <label htmlFor="Move Name 2">
-                  <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  <h2 class="flex m-auto justify-center max-w-sm text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                     Move Name 2
                   </h2>
                 </label>
@@ -244,7 +244,7 @@ export default function Creator() {
                   ></input>
                 </div>
                 <label htmlFor="Move 2 Description">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Move 2 Description
                   </h2>
                 </label>
@@ -269,7 +269,7 @@ export default function Creator() {
                 </div>
 
                 <label htmlFor="Move Name 3">
-                  <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  <h2 class="flex m-auto justify-center max-w-sm text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                     Move Name 3
                   </h2>
                 </label>
@@ -285,7 +285,7 @@ export default function Creator() {
                   ></input>
                 </div>
                 <label htmlFor="Move 3 Description">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Move 3 Description
                   </h2>
                 </label>
@@ -310,7 +310,7 @@ export default function Creator() {
                 </div>
 
                 <label htmlFor="Move Name 4">
-                  <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  <h2 class="flex m-auto justify-center max-w-sm text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                     Move Name 4
                   </h2>
                 </label>
@@ -326,7 +326,7 @@ export default function Creator() {
                   ></input>
                 </div>
                 <label htmlFor="Move 4 Description">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Move 4 Description
                   </h2>
                 </label>
@@ -344,7 +344,7 @@ export default function Creator() {
               </section>
               <section class="flex flex-col justify-center">
                 <label htmlFor="Gmail">
-                  <h2 class="flex m-auto justify-center max-w-md text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
+                  <h2 class="flex m-auto justify-center max-w-sm text-center font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 bg-white dark:bg-black dark:text-amber-400">
                     Gmail
                   </h2>
                 </label>
@@ -362,7 +362,7 @@ export default function Creator() {
               </section>
               <section>
                 <label htmlFor="Creator ID">
-                  <h2 class="flex justify-center m-auto max-w-md font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
+                  <h2 class="flex justify-center m-auto max-w-sm font-zen rounded-full bg-gradient-to-tr from-amber-500 via-red-800 to-amber-500 p-4 text-white mt-3 w-full bg-white dark:bg-black dark:text-amber-400 lg:p-4">
                     Creator ID
                   </h2>
                 </label>

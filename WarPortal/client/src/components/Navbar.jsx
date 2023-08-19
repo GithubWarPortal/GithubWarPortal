@@ -20,7 +20,7 @@ export default function Navbar() {
   };
 
   return (
-    <div class="text-lg flex flex-col dark:bg-black lg:p-6  h-1/6 font-zen">
+    <div class="text-2xl flex flex-col dark:bg-black lg:p-6  font-zen">
       <header class="flex flex-col flex-wrap">
         <img
           class="md:w-1/5 md:l-1/5 w-full l-2/3 m-auto  mb-4  border-double border-2  border-amber-700"
@@ -28,8 +28,8 @@ export default function Navbar() {
         />
       </header>
 
-      <nav class="flex flex-wrap ">
-        <ul class="flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
+      <nav class="flex  dark:bg-black flex-wrap pb-2">
+        <ul class="dark:bg-black flex flex-wrap gap-2 justify-center text-center place-items-center font-open">
           <li>
             <button class=" w-1/7 bg-gradient-to-r  hover:bg-gradient-to-t hover:from-yellow-500 hover:via-red-800  hover:to-yellow-500 from-yellow-500 via-red-800 p-2 to-yellow-500  rounded-full font-bold hover: text-center">
               <span class="dark:text-amber-500 w-1/7 p-2 block hover: text-red-900 rounded-full dark:bg-black bg-white">

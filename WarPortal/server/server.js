@@ -18,7 +18,7 @@ import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
 import getApprovedRouter from "./routes/Admin/getApproved.js"
 import getSubmissionsRouter from "./routes/Admin/getSubmissions.js"
 import removeCardRouter from "./routes/Admin/removeCard.js";
-
+import addCharacterRouter from "./routes/Admin/character.js";
 //Checkout Routers
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
@@ -51,6 +51,7 @@ app.use("/AdminSignIn", adminSignInRouter);
 app.use("/approve", approveSubmissionRouter);
 app.use("/GetApproved", getApprovedRouter);
 app.use("/RemoveCard", removeCardRouter);
+app.use("/AddCharacter", addCharacterRouter);
 //Router for creator subscriptions
 app.use("/create-creator-checkout-session", creatorCheckoutRouter);
 app.use("/create-creator-portal-session", creatorPortalRouter);

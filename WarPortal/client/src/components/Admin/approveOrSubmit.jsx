@@ -20,6 +20,13 @@ export default function ApproveOrSubmit() {
             </Link>{" "}
           </span>
         </button>
+        <button>
+          <span>
+            <Link to="/AddCharacters">
+              Add Character
+            </Link>
+          </span>
+        </button>
       </div>
     </>
   );

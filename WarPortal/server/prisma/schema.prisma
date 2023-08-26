@@ -9,15 +9,14 @@ datasource db {
 }
 
 model Characters {
-  id                     Int       @id @unique @default(autoincrement())
-  name                   String
-  physicalDescription    String?   @db.Text
-  personalityDescription String?   @db.Text
-  characterHistory       String    @db.Text
-  price                  Float?
-  dtStart                DateTime?
-  dtEnd                  DateTime?
-  characterUse           String?   @db.Text
+  id                   Int       @id @unique @default(autoincrement())
+  name                 String
+  imageUrl             String    @db.Text
+  characterDescription String    @db.Text
+  price                Float?
+  dtStart              DateTime?
+  dtEnd                DateTime?
+  characterUse         String?   @db.Text
 
   @@index([id])
 }
@@ -130,25 +129,25 @@ model Admin {
 }
 
 model Approval {
-  id           String      @unique @default(uuid())
-  Role                   Role        @default(CREATOR)
-  cardName               String
-  moveOne                String
-  moveOneDescription     String      @db.Text
-  moveTwo                String
-  moveTwoDescription     String      @db.Text
-  moveThree              String
-  moveThreeDescription   String      @db.Text
-  moveFour               String
-  moveFourDescription    String      @db.Text
-  gmail                  String
-  approved               Boolean     @default(false)
-  submissionDate         DateTime    @default(now())
-  StoreOwner             StoreOwner? @relation(fields: [StoreOwnerId], references: [storeOwnerId])
-  StoreOwnerId String?
-  Creator                Creator?    @relation(fields: [CreatorId], references: [creatorId])
-  CreatorId       String?
-  created Boolean @default(false)
+  id                   String      @unique @default(uuid())
+  Role                 Role        @default(CREATOR)
+  cardName             String
+  moveOne              String
+  moveOneDescription   String      @db.Text
+  moveTwo              String
+  moveTwoDescription   String      @db.Text
+  moveThree            String
+  moveThreeDescription String      @db.Text
+  moveFour             String
+  moveFourDescription  String      @db.Text
+  gmail                String
+  approved             Boolean     @default(false)
+  submissionDate       DateTime    @default(now())
+  StoreOwner           StoreOwner? @relation(fields: [StoreOwnerId], references: [storeOwnerId])
+  StoreOwnerId         String?
+  Creator              Creator?    @relation(fields: [CreatorId], references: [creatorId])
+  CreatorId            String?
+  created              Boolean     @default(false)
 
   @@index([id])
   @@index([StoreOwnerId])

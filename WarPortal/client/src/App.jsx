@@ -12,7 +12,7 @@ import Admin from "./components/Admin/Admin.jsx";
 import ApproveCards from "./components/Admin/approveCards.jsx";
 import SubmitCards from "./components/Admin/submitCards.jsx";
 import ApproveOrSubmit from "./components/Admin/approveOrSubmit.jsx";
-
+import AddCharacter from "./components/Admin/addCharacter";
 import SignIn from "./components/SignIn/SignIn.jsx";
 import Create from "./components/Create/Create.jsx";
 import StoreOwner from "./components/Create/store.jsx";
@@ -54,6 +54,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/CreatorSignUp" element={<CreatorSignUp />} />
           <Route path="/StoreOwnerSignUp" element={<StoreOwnerSignUp />} />
+          <Route path="/AddCharacters" element={<AddCharacter />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -12,13 +12,17 @@ import creatorSubmissionRouter from "./routes/CardCreator/creatorSubmission.js";
 import creatorSignInRouter from "./routes/SignIn/creator.js";
 import storeSignInRouter from "./routes/SignIn/store.js";
 
+
+//Stories
+
+import characterInfoRouter from "./routes/CharacterStories/characters.js"
 //Admin routes
 import adminSignInRouter from "./routes/Admin/admin.js";
 import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
 import getApprovedRouter from "./routes/Admin/getApproved.js"
 import getSubmissionsRouter from "./routes/Admin/getSubmissions.js"
 import removeCardRouter from "./routes/Admin/removeCard.js";
-
+import addCharacterRouter from "./routes/Admin/character.js";
 //Checkout Routers
 import creatorCheckoutRouter from "./routes/Stripe/creatorCheckout.js";
 import creatorPortalRouter from "./routes/Stripe/creatorPortal.js";
@@ -51,6 +55,7 @@ app.use("/AdminSignIn", adminSignInRouter);
 app.use("/approve", approveSubmissionRouter);
 app.use("/GetApproved", getApprovedRouter);
 app.use("/RemoveCard", removeCardRouter);
+app.use("/AddCharacter", addCharacterRouter);
 //Router for creator subscriptions
 app.use("/create-creator-checkout-session", creatorCheckoutRouter);
 app.use("/create-creator-portal-session", creatorPortalRouter);
@@ -65,4 +70,7 @@ app.use("/webhook-creator", creatorWebhookRouter);
 app.use("/CreateCreator", createCreatorRouter);
 app.use("/CreateStore", createStoreRouter);
 
+
+//Stories 
+app.use("/CharacterStories", characterInfoRouter)
 app.listen(port, () => console.log(`Server is running on port ${port}`));

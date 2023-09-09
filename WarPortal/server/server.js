@@ -12,6 +12,10 @@ import creatorSubmissionRouter from "./routes/CardCreator/creatorSubmission.js";
 import creatorSignInRouter from "./routes/SignIn/creator.js";
 import storeSignInRouter from "./routes/SignIn/store.js";
 
+
+//Stories
+
+import characterInfoRouter from "./routes/CharacterStories/characters.js"
 //Admin routes
 import adminSignInRouter from "./routes/Admin/admin.js";
 import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
@@ -66,4 +70,7 @@ app.use("/webhook-creator", creatorWebhookRouter);
 app.use("/CreateCreator", createCreatorRouter);
 app.use("/CreateStore", createStoreRouter);
 
+
+//Stories 
+app.use("/CharacterStories", characterInfoRouter)
 app.listen(port, () => console.log(`Server is running on port ${port}`));

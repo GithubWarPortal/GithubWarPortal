@@ -20,7 +20,12 @@ model Characters {
 
   @@index([id])
 }
-
+model Creatures{
+   id                   Int       @id @unique @default(autoincrement())
+  name                 String
+  imageUrl             String   
+  characterDescription String    @db.Text
+}
 model CharacterStorage {
   cardId      String       @id @default(uuid())
   characterId String       @default(uuid())

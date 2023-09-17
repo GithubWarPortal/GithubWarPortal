@@ -15,6 +15,17 @@ export function StoryArcs() {
     getCharacters();
   }, []);
 
+  const [creatures, setCreatures] = useState([]);
+  async function getCreatures(){
+    const response = await fetch("http://localhost:5000/Creatures")
+  const data = await response.json()
+    setCreatures(data);
+  }
+
+  useEffect(()=> {
+    getCreatures();
+  }, []);
+
   return (
     <>
       <div className="bg-[url('/images/kuri.jpg')]">
@@ -26,6 +37,13 @@ export function StoryArcs() {
           </div>
         ))}
         </div>
+        {creatures.map(data=> {
+          <div key={data.id}>
+            <p>{data.name}</p>
+            <img src={data.imageUrl}/>
+            <p>{data.characterDescription}</p>
+</div>
+        })}
       </div>
     </>
   );

@@ -14,8 +14,8 @@ import storeSignInRouter from "./routes/SignIn/store.js";
 
 
 //Stories
-
-import characterInfoRouter from "./routes/CharacterStories/characters.js"
+import creatureInfoRouter from "./routes/CharacterStories/creatures.js";
+import characterInfoRouter from "./routes/CharacterStories/characters.js";
 //Admin routes
 import adminSignInRouter from "./routes/Admin/admin.js";
 import approveSubmissionRouter from "./routes/Admin/approveSubmissions.js";
@@ -72,5 +72,6 @@ app.use("/CreateStore", createStoreRouter);
 
 
 //Stories 
-app.use("/CharacterStories", characterInfoRouter)
+app.use("/CharacterStories", characterInfoRouter);
+app.use("/CreatureStories", creatureInfoRouter);
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @GithubWarPortal
 - 👀 I’m interested in ... blockchain
-- 🌱 I’m currently learning ...python, rust, compression systems
+- 🌱 I’m currently aspiring to learn ...Python, Rust, SimD compression systems, Ruby
 - 💞️ I’m looking to collaborate on ... WarPortal.org platform
 
 - 📫 How to reach me ... Facebook, Instagram, WarPortal.org

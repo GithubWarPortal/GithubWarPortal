@@ -1,7 +1,8 @@
 - 👋 Hi, I’m @GithubWarPortal
 - 👀 I’m interested in ... blockchain
-- 🌱 I’m currently learning ...crypto
-- 💞️ I’m looking to collaborate on ... Defi Crypto gaming and NFT
+- 🌱 I’m currently learning ...python, rust, compression systems
+- 💞️ I’m looking to collaborate on ... WarPortal.org platform
+
 - 📫 How to reach me ... Facebook, Instagram, WarPortal.org
 
 By reading and addressing the files you promise to be fair and kind to others and do not intend to reproduce the efforts of War Portal as a competitor. 
